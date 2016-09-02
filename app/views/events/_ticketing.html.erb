@@ -1,0 +1,23 @@
+
+
+
+<div class="trigger"><a href="#bookings">Show Talks</a></div>
+<div class="main"></div>
+
+<script type="text/template" id="talks-index-template">
+  <h1>Talks</h1>
+  <% _.each(talks, function (talk) { %>
+    <div class="talk">
+      <h2><%= talk.topic %></h2>
+      <div>id: <%= talk.id %></div>
+      <div>speaker: <%= talk.speaker %></div>
+      <div>Session: <%= talk.sessionTime %></div>
+      <div class="ticketField">
+        <input type="text" value="<%= talk.seats %>">
+        <button class="+"> + </button>
+        <button class="-"> - </button>
+      </div>
+    </div>
+  <% }); %>
+  <div><button>Go back</button><button>Next</button></div>
+</script>
