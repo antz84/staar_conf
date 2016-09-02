@@ -8,7 +8,7 @@ var Router = Backbone.Router.extend({
     listTalks: function() {
     $.ajax({
       type: "GET",
-      url: 'http://localhost:3000/api/talks'
+      url: 'http://localhost:3000/api/events'
     }).done(
       function(res) {
         console.log(res);
@@ -18,6 +18,16 @@ var Router = Backbone.Router.extend({
     }
 });
 
+// var TalksIndexView = Backbone.View.extend({
+//
+//   template: _.template($('#talks-index-template').html()),
+//
+//   events: {} ,
+//
+//   render: function (res) {
+//       this.$el.html(this.template({talks: res }));
+//       return this.el;}
+// });
 
 // var EventsIndexView = Backbone.View.extend({
 //
