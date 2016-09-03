@@ -1,40 +1,36 @@
-var Movie = Backbone.Model.extend({
+$(function() {
+  var $form = $('#payment-form');
+  $form.submit(function(event) {
+    // Disable the submit button to prevent repeated clicks:
+    $form.find('.submit').prop('disabled', true);
+
+    // Request a token from Stripe:
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from being submitted:
+    return false;
+  });
 });
 
-var movie = new Movie({ title: 'jaws 3d', year: 1234});
-var movie2 = new Movie({ title: 'once', year: 2345 });
-// movie.set('title', 'jaws 3d');
+function stripeResponseHandler(status, response) {
+  // Grab the form:
+  var $form = $('#payment-form');
 
-var CardView = Backbone.View.extend({
+  if (response.error) { // Problem!
 
-  tagName: 'div',
-  className: 'card',
+    // Show the errors on the form:
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('.submit').prop('disabled', false); // Re-enable submission
 
-  events: {
-    'click .year': 'doSomething',
-    'click h1': 'close'
-  },
+  } else { // Token was created!
 
-  template: $('#card-template').html(),
+    // Get the token ID:
+    var token = response.id;
 
-  initialize: function() {
-    this.listenTo(this.model, 'change', this.render)
-  },
+    // Insert the token ID into the form so it gets submitted to the server:
+    $form.append($('<input type="hidden" name="stripeToken">').val(token));
 
-  close: function() {
-    this.$el.hide();
-  },
-
-  doSomething: function() {
-    console.log(this.model.get('title'));
-  },
-
-  render: function() {
-    // this.$el.html('<h1>'+ this.model.get('title') +'</h1><h3 class="year">' + this.model.get('year') +'</h3>' );
-
-    // var template = Handlebars.compile( this.template )
-    this.$el.html( '<h2>sdfsdf</h2>'  )
-    return this;
+    // Submit the form:
+    $form.get(0).submit();
   }
-
-});
+}

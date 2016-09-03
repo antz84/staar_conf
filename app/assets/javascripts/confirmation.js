@@ -1,20 +1,11 @@
 $(document).ready(function() {
 
-  console.log('sdfsdfs');
-  $( "#go-home" ).click(function(event) {
-
-
-    console.log('sdfsdf');
-
-
+  $( "#book-btn" ).click(function(event) {
     $('.button-collapse').sideNav('hide');
-    $('.button-collapse').sideNav('hide');
-    $('.button-collapse').sideNav('hide');
-    $('.button-collapse').sideNav('hide');
-    $('.button-collapse').sideNav('hide');
-    $('.button-collapse').sideNav('hide');
+  });
 
-
+  $( "#pay-btn" ).click(function(event) {
+    $('.button-collapse').sideNav('hide');
   });
 
 });
