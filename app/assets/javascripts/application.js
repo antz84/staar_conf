@@ -12,12 +12,14 @@
 //
 // = require jquery
 // = require jquery_ujs
-// = require turbolinks
 // = require underscore
 // = require handlebars
 // = require backbone
 // = require materialize
-// = require views/payment
+// = require payment
 // = require views/talks
 // = require router
+// = require payment
+// = require booking
+// = require confirmation
 // = require main
