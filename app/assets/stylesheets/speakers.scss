@@ -1,0 +1,105 @@
+#speak-content{
+  background-color: white;
+  width: 90%;
+  height: 100%;
+}
+
+#speak-image{
+  width: 40%;
+  height: 100%;
+  background-color: white;
+  max-height: 200px;
+}
+
+.speak-img-holder{
+	height: 80%;
+	width: 45%;
+	background-color: white;
+	display: inline-block;
+	float: left;
+	vertical-align: top;
+	
+}
+
+.guest-speaker-list{
+	overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.speak-info{
+	display: inline;
+	float:left;
+	height: 100%;
+	position: relative;
+	/* 
+	vertical-align: top;
+	 */
+	box-sizing: border-box;
+	background-color: lightgray;
+	padding-left: 3%;
+	margin-left: 5%;
+	text-align: center;
+	width: 45%;
+/* 
+	need to find a proper way to do this
+ */
+	min-height: 100%;
+}
+.speak-img{
+	width: 100%;
+	max-height: 100%;
+}
+	
+button.guest-speaker-list {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+button.guest-speaker-list.active, button.guest-speaker-list:hover {
+    background-color: #ddd;
+}
+
+div.panel {
+    padding: 0 18px;
+    padding-bottom: 2%; 
+    background-color: white;
+    display: none;
+}
+
+div.panel.show {
+    display: block;
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; 
+}
+
+button.guest-speaker-list:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.guest-speaker-list.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
