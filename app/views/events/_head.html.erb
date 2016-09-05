@@ -1,13 +1,37 @@
 <h1>Head</h1>
 
 
-<a href="#" data-activates="book" class="button-collapse waves-effect waves-light btn"><i class="material-icons">Buy Tickets</i></a>
+<a id="buy-btn" href="#" data-activates="book" class="button-collapse waves-effect waves-light btn"><i class="material-icons">Buy Tickets</i></a>
 
 <div id="book" class="side-nav">
+
+  <div class="ticketing">
+    <!-- <div class="talk-list collection">
+      <div class="talk collection-item row" id="1">
+        <div class="topic col s1">Js Prototype</div>
+        <div class="price col s1">$50</div>
+        <div claas="seats col s1">50</div>
+        <div class="ticketForm col s1">
+          <input class="ticketQty" type="text" value=100>
+          <button class="minus"> - </button>
+          <button class="plus"> + </button>
+        </div>
+      </div>
+
+    </div> -->
+
+
+  </div>
+
  <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn"><i class="material-icons">Book</i></a>
 </div>
 
 <div id="payment" class="side-nav">
+
+  <div class="summary-payment">
+
+  </div>
+
   <div>
     <form action="/charges" method="POST" id="payment-form">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
