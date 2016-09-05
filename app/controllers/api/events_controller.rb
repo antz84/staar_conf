@@ -3,7 +3,7 @@ module Api
   class EventsController < ApplicationController
 
     def list_events
-      events = Event.all
+      events = Event.all#.left_outer_joins(:tickets).select("events.*, tickets.*")
       render json: events
     end
 
@@ -11,6 +11,19 @@ module Api
 
 end
 
+
+events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price,events.seats,tickets.event_id,tickets.number")
+
+# # {"id":1,
+# "topic":"Handling Asycn",
+# "price":25,"
+# seats":20,
+# "created_at":"2016-09-04T04:12:07.219Z","updated_at":"2016-09-04T04:12:07.219Z",
+# "number":3,
+# "firstname":"Ray",
+# "surname":"X",
+# "email":"1@23.com",
+# "event_id":7}
 # Location.group(:city, :province, :country)
 #         .select(:city, :province, :country, "SUM(images_girl_count) as sum_images_count")
 #         .order("sum_images_count DESC")
