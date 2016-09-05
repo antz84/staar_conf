@@ -28,18 +28,27 @@ function stripeResponseHandler(status, response) {
     var token = response.id;
 
     // Insert the token ID into the form so it gets submitted to the server:
-    $form.append($('<input type="hidden" name="stripeToken">').val(token));
+    // $form.append($('<input type="hidden" name="stripeToken">').val(token));
 
     // Submit the form:
-    console.log($form.get(0));
-    // $form.get(0).submit();
-    //ajax
-    // $.ajax({
-    //   type:"POST",
-    //   url:"http://localhost:3000/api/charges",
-    //   data:{}
-    // }).done(function(res){
-    //   //show payment confirmed page
-    // });
+    // console.log($form.get(0));
+    // console.log($("#cardNo").val());
+    // console.log($("#exp_m").val());
+    // console.log($("#cvc").val());
+    var amount = $("#total").val();
+    console.log($("#total").val());
+    console.log(token);
+    $form.get(0).submit();
+    // ajax
+
+    $.ajax({
+      type:"POST",
+      url:"http://localhost:3000/api/charges",
+      data:{token_ : token, amount_ : amount}
+    }).done(function(res){
+      console.log(JSON.stringify(res));
+      //clear everything and show payment confirmed page
+
+    });
   }
 }

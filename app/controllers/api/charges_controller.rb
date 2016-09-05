@@ -11,12 +11,13 @@ module Api
       Stripe.api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
 
       # Get the credit card details submitted by the form
-      token = params[:stripeToken]
+      token = params[:token_]
+      amount = params[:amount_].to_i * 100
 
       # Create a charge: this will charge the user's card
       begin
         charge = Stripe::Charge.create(
-          :amount => 1000, # Amount in cents
+          :amount => amount, # Amount in cents
           :currency => "usd",
           :source => token,
           :description => "Example charge"
@@ -24,7 +25,9 @@ module Api
         rescue Stripe::CardError => e
         # The card has been declined
       end
-      redirect_to '/'
+      render json: {message: "Success!"}
+
     end
 
+  end
 end
