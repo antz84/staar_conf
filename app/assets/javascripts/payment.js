@@ -36,17 +36,24 @@ function stripeResponseHandler(status, response) {
     // console.log($("#exp_m").val());
     // console.log($("#cvc").val());
     var amount = $("#total").val();
-    console.log($("#total").val());
-    console.log(token);
-    $form.get(0).submit();
+    var first_name = $("#first_name").val();
+    var last_name = $("#last_name").val();
+    var email = $("#email").val();
+    // $form.get(0).submit();
     // ajax
 
     $.ajax({
       type:"POST",
       url:"http://localhost:3000/api/charges",
-      data:{token_ : token, amount_ : amount}
+      data:{token_ : token, amount_ : amount, first_name : first_name, last_name: last_name, email : email}
     }).done(function(res){
-      console.log(JSON.stringify(res));
+      console.log(res);
+      $(".payment-container").detach();
+      
+
+
+
+      // console.log(JSON.stringify(res));
       //clear everything and show payment confirmed page
 
     });

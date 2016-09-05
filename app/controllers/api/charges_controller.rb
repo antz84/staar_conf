@@ -12,7 +12,7 @@ module Api
 
       # Get the credit card details submitted by the form
       token = params[:token_]
-      amount = params[:amount_].to_i * 100
+      amount = params[:amount_].to_i * 100 + 100
 
       # Create a charge: this will charge the user's card
       begin
@@ -25,6 +25,15 @@ module Api
         rescue Stripe::CardError => e
         # The card has been declined
       end
+
+      # do this for each ticket - maybe a .each method.
+      ticket = Ticket.new
+      ticket.firstname = params[:first_name]
+      ticket.surname = params[:last_name]
+      ticket.email = params[:email]
+      # need to save the event id before the save will be successful.
+      ticket.save
+
       render json: {message: "Success!"}
 
     end
