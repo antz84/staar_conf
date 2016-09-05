@@ -1,4 +1,4 @@
-
+var total = 0;
 
 $(document).ready(function() {
 
@@ -21,10 +21,13 @@ $(document).ready(function() {
       url: 'http://localhost:3000/api/events'
     }).done(
       function(res){
+        // console.log(JSON.stringify(res));
         ticketBox = pool(res); //fetch from database ticketing info
+        // exportedFunction = ticketBox;
         render(res); //Populate the ticket listing page
         // console.log(ticketBox.toString());
         switchEvent();
+
       }
     );
 
@@ -113,6 +116,7 @@ $(document).ready(function() {
 
     $('#buy-btn').on('click', function() {
       //reset all price fields and shopping cart
+
         ticketBox.clearBucket();
         $('.ticketQty').each(function () {
           $(this).val(0);
@@ -123,7 +127,10 @@ $(document).ready(function() {
 
     //click to proceed to payment
 
-    $('#book-btn').on('click', function(){summary();});
+    $('#book-btn').on('click', function(){summary();
+      total = ticketBox.getTotal();
+      console.log(total);
+    });
 
     //Create a summary of tickets bought
     function summary() {
