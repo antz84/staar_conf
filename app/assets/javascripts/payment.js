@@ -27,20 +27,11 @@ function stripeResponseHandler(status, response) {
     // Get the token ID:
     var token = response.id;
 
-    // Insert the token ID into the form so it gets submitted to the server:
-    // $form.append($('<input type="hidden" name="stripeToken">').val(token));
-
-    // Submit the form:
-    // console.log($form.get(0));
-    // console.log($("#cardNo").val());
-    // console.log($("#exp_m").val());
-    // console.log($("#cvc").val());
     var amount = $("#total").val();
     var first_name = $("#first_name").val();
     var last_name = $("#last_name").val();
     var email = $("#email").val();
     // $form.get(0).submit();
-    // ajax
 
     $.ajax({
       type:"POST",
@@ -48,13 +39,28 @@ function stripeResponseHandler(status, response) {
       data:{token_ : token, amount_ : amount, first_name : first_name, last_name: last_name, email : email}
     }).done(function(res){
       console.log(res);
-      $(".payment-container").detach();
-      
+      var $paymentForm = $(".payment-container").detach();
+      // var $paymentDiv = $('<div>', {class: "payment-container"});
+      var $confirmation = $('<h3>').text("Confirmation");
+      var $paymentSuccess = $('<h4>').text("Payment Successful");
+      var $emailed = $('<h4>').text("Your tickets have been emailed to you.");
+      var $seeYou = $('<h4>').text("See you there!");
+      var $button = $('<button>', {id: "home-btn"}).text("Home");
 
+      // $("#payment").append($paymentDiv);
+      $("#payment").append($confirmation);
+      $("#payment").append($paymentSuccess);
+      $("#payment").append($emailed);
+      $("#payment").append($seeYou);
+      $("#payment").append($button);
 
-
-      // console.log(JSON.stringify(res));
-      //clear everything and show payment confirmed page
+      $( "#home-btn" ).click(function(event) {
+        $('.button-collapse').sideNav('hide');
+        $("#payment").empty();
+        $paymentForm.appendTo( "#payment" );
+        $form.find('.submit').prop('disabled', false);
+        window.scrollTo(0, 0);
+      });
 
     });
   }
