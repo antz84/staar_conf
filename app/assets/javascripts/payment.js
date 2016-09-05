@@ -16,35 +16,36 @@ function stripeResponseHandler(status, response) {
   // Grab the form:
   var $form = $('#payment-form');
 
-  if (response.error) { // Problem!
-
+  if (response.error) {
     // Show the errors on the form:
     $form.find('.payment-errors').text(response.error.message);
     $form.find('.submit').prop('disabled', false); // Re-enable submission
 
-  } else { // Token was created!
-
+  } else {
     // Get the token ID:
-    var token = response.id;
 
-    // Insert the token ID into the form so it gets submitted to the server:
-    // $form.append($('<input type="hidden" name="stripeToken">').val(token));
+    var firstname = $form.find('#first-name').val();
+    var surname = $form.find('#surname').val();
+    var email_ = $form.find('#email').val();
 
-    // Submit the form:
-    // console.log($form.get(0));
-    // console.log($("#cardNo").val());
-    // console.log($("#exp_m").val());
-    // console.log($("#cvc").val());
-    var amount = $("#total").val();
-    console.log($("#total").val());
-    console.log(token);
-    $form.get(0).submit();
-    // ajax
+    var token_ = response.id;
+    var amount_ = exported.getTotal();
+    var alltickets = exported.getAllTickets();
+    console.log(amount_);
+    console.log(token_);
+    console.log(exported.toString());
 
     $.ajax({
       type:"POST",
       url:"http://localhost:3000/api/charges",
-      data:{token_ : token, amount_ : amount}
+      data:{token : token_,
+            amount : amount_,
+            info : { fname : firstname,
+                     sname : surname,
+                     email : email_,
+                     tickets : alltickets
+                   }
+          }
     }).done(function(res){
       console.log(JSON.stringify(res));
       //clear everything and show payment confirmed page

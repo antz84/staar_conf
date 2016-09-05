@@ -25,8 +25,6 @@
       </div>
 
     </div> -->
-
-
   </div>
 
  <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn"><i class="material-icons">Book</i></a>
@@ -42,6 +40,27 @@
     <form action="/charges" method="POST" id="payment-form">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <span class="payment-errors"></span>
+
+      <div class="form-row">
+        <label>
+          <span>First Name</span>
+          <input id="first-name" type="text" size="16" placeholder="First Name">
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>
+          <span>Surname</span>
+          <input id="surname" type="text" size="16" placeholder="Surname">
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>
+          <span>Email</span>
+          <input id="email" type="text" size="16" placeholder="Surname">
+        </label>
+      </div>
 
       <div class="form-row">
         <label>
@@ -68,13 +87,13 @@
       <input id="total" name="totalPrice" class="total-price" type="hidden" value="100">
 
       <button type="submit" class="submit">Pay</button>
+      <a id="home-btn" href="#" class="waves-effect waves-light btn"><i class="material-icons">Home</i></a>
     </form>
   </div>
 
  </div>
 
 <div id="confirmation" class="side-nav">
-  <a id="home-btn" href="#" class="waves-effect waves-light btn"><i class="material-icons">Home</i></a>
 </div>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
