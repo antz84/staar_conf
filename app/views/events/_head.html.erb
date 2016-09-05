@@ -33,45 +33,47 @@
 </div>
 
 <div id="payment" class="side-nav">
+  <div class="payment-container">
+    <div>
+      <form action="api/charges" method="POST" id="payment-form">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-  <div class="summary-payment">
+        <input id="first_name" type="text" placeholder="First Name">
+        <input id="last_name" type="text" placeholder="Last Name">
+        <input id="email" type="text" placeholder="Email Address">
 
+        <span class="payment-errors"></span>
+
+        <div class="form-row">
+          <label>
+            <span>Card Number</span>
+            <input id="cardNo" type="text" size="16" data-stripe="number" value="4242424242424242">
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <span>Expiration (MM/YY)</span>
+            <input id="exp_m" type="text" size="2" data-stripe="exp_month" value="10">
+          </label>
+          <span> / </span>
+          <input id="exp_yr" type="text" size="2" data-stripe="exp_year" value="17">
+        </div>
+
+        <div class="form-row">
+          <label>
+            <span>CVC</span>
+            <input id="cvc" type="text" size="4" data-stripe="cvc" value="123">
+          </label>
+        </div>
+        <input id="total" name="totalPrice" class="total-price" type="hidden" value="100">
+
+        <button type="submit" class="submit">Pay</button>
+      </form>
+
+    </div>
   </div>
-
-  <div>
-    <form action="/charges" method="POST" id="payment-form">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <span class="payment-errors"></span>
-
-      <div class="form-row">
-        <label>
-          <span>Card Number</span>
-          <input id="cardNo" type="text" size="16" data-stripe="number" value="4242424242424242">
-        </label>
-      </div>
-
-      <div class="form-row">
-        <label>
-          <span>Expiration (MM/YY)</span>
-          <input id="exp_m" type="text" size="2" data-stripe="exp_month" value="10">
-        </label>
-        <span> / </span>
-        <input id="exp_yr" type="text" size="2" data-stripe="exp_year" value="17">
-      </div>
-
-      <div class="form-row">
-        <label>
-          <span>CVC</span>
-          <input id="cvc" type="text" size="4" data-stripe="cvc" value="123">
-        </label>
-      </div>
-      <input id="total" name="totalPrice" class="total-price" type="hidden" value="100">
-
-      <button type="submit" class="submit">Pay</button>
-    </form>
-  </div>
-
- </div>
+</div>
 
 <div id="confirmation" class="side-nav">
   <a id="home-btn" href="#" class="waves-effect waves-light btn"><i class="material-icons">Home</i></a>
