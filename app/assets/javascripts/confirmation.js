@@ -5,9 +5,9 @@ $(document).ready(function() {
   });
 
   $( "#pay-btn" ).click(function(event) {
-    console.log("total:" + total);
+    $totalPrice = $('.total-price');
+    $totalPrice.val(total);
     $('.button-collapse').sideNav('hide');
   });
 
-  // console.log(ticketBox.getTotal());
 });
