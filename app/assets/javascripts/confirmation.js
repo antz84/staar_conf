@@ -9,5 +9,5 @@ $(document).ready(function() {
     $('.button-collapse').sideNav('hide');
   });
 
-  console.log(ticketBox.getTotal());
+  // console.log(ticketBox.getTotal());
 });
