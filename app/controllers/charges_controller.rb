@@ -27,3 +27,10 @@ class ChargesController < ApplicationController
 
 
 end
+
+# when Pay button is pressed, I want to:
+# - ajax function that sends the amount object to the sever(?)
+# - get the amount from ray's amount object
+# - replace it with the amount in the create method
+# - process the payment, update the db, send the email, and send response back.
+# - when response comes back, ajax kicks in and goes to the confirmation page.
