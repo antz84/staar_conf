@@ -1,4 +1,4 @@
-var total = 0;
+var total = 10;
 
 $(document).ready(function() {
 

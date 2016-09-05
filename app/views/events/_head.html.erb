@@ -46,28 +46,28 @@
       <div class="form-row">
         <label>
           <span>Card Number</span>
-          <input type="text" size="16" data-stripe="number">
+          <input type="text" size="16" data-stripe="number" value="4242424242424242">
         </label>
       </div>
 
       <div class="form-row">
         <label>
           <span>Expiration (MM/YY)</span>
-          <input type="text" size="2" data-stripe="exp_month">
+          <input type="text" size="2" data-stripe="exp_month" value="10">
         </label>
         <span> / </span>
-        <input type="text" size="2" data-stripe="exp_year">
+        <input type="text" size="2" data-stripe="exp_year" value="17">
       </div>
 
       <div class="form-row">
         <label>
           <span>CVC</span>
-          <input type="text" size="4" data-stripe="cvc">
+          <input type="text" size="4" data-stripe="cvc" value="123">
         </label>
       </div>
-      <input class="total-price" type="hidden" value="">
-      <a id="pay-btn" href="#" data-activates="confirmation" class="button-collapse waves-effect waves-light btn"><i class="material-icons">Pay</i></a>
-      <input type="submit" class="submit">
+      <input name="totalPrice" class="total-price" type="hidden" value="">
+
+      <button type="submit" class="submit">Pay</button>
     </form>
   </div>
 
