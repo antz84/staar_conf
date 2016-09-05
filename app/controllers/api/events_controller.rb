@@ -3,7 +3,8 @@ module Api
   class EventsController < ApplicationController
 
     def list_events
-      events = Event.all#.left_outer_joins(:tickets).select("events.*, tickets.*")
+      events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price, COALESCE(events.seats - sum(tickets.number),events.seats) as seats,tickets.number").group("events.id, events.topic, events.price, events.seats, tickets.number")
+      # events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price, events.seats, tickets.event_id ,tickets.number")
       render json: events
     end
 
@@ -11,8 +12,18 @@ module Api
 
 end
 
+# Event.left_outer_joins(:tickets).
+# select("events.id, events.topic, events.price, COALESCE(events.seats - sum(tickets.number),events.seats) as seats,tickets.number")
+# .group("events.id, events.topic, events.price, events.seats, tickets.number")
+#
+# COALESCE(seats - sum(number),seats) as seats
+# [{"id":7,"topic":"Handling Asycn","price":25,"seats":20,"event_id":7,"number":3},
+#   {"id":8,"topic":"Js Callbacks","price":20,"seats":15,"event_id":8,"number":10},
+#   {"id":9,"topic":"Web sockets","price":29,"seats":15,"event_id":9,"number":6},
+#   {"id":7,"topic":"Handling Asycn","price":25,"seats":20,"event_id":7,"number":3},
+#   {"id":10,"topic":"Js closure","price":12,"seats":50,"event_id":null,"number":null}]
 
-events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price,events.seats,tickets.event_id,tickets.number")
+# events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price,events.seats,tickets.event_id,tickets.number")
 
 # # {"id":1,
 # "topic":"Handling Asycn",

@@ -31,6 +31,15 @@ function stripeResponseHandler(status, response) {
     $form.append($('<input type="hidden" name="stripeToken">').val(token));
 
     // Submit the form:
-    $form.get(0).submit();
+    console.log($form.get(0));
+    // $form.get(0).submit();
+    //ajax
+    // $.ajax({
+    //   type:"POST",
+    //   url:"http://localhost:3000/api/charges",
+    //   data:{}
+    // }).done(function(res){
+    //   //show payment confirmed page
+    // });
   }
 }

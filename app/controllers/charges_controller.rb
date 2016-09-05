@@ -19,9 +19,10 @@ class ChargesController < ApplicationController
         :source => token,
         :description => "Example charge"
       )
-    rescue Stripe::CardError => e
+      rescue Stripe::CardError => e
       # The card has been declined
     end
+    
     redirect_to '/'
   end
 

@@ -21,9 +21,8 @@ $(document).ready(function() {
       url: 'http://localhost:3000/api/events'
     }).done(
       function(res){
-        // console.log(JSON.stringify(res));
+        console.log(JSON.stringify(res));
         ticketBox = pool(res); //fetch from database ticketing info
-        // exportedFunction = ticketBox;
         render(res); //Populate the ticket listing page
         // console.log(ticketBox.toString());
         switchEvent();
