@@ -1,57 +1,62 @@
-  <div id="loc-mainDiv">
 
-    <div id="loc-eventDetails">
-      <p><b>Date:</b> Monday, October 31st, 2016</p>
-      <p><b>Address:</b> <a href="https://www.google.com.au/maps/place/45+William+St,+Melbourne+VIC+3000/@-37.8185774,144.9569066,17z/data=!3m1!4b1!4m5!3m4!1s0x6ad65d4d04c3d745:0x746d8e218a07f05f!8m2!3d-37.8185774!4d144.9590953">Level 12/A, 45 William Street,</a></p>
-      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="https://www.google.com.au/maps/place/45+William+St,+Melbourne+VIC+3000/@-37.8185774,144.9569066,17z/data=!3m1!4b1!4m5!3m4!1s0x6ad65d4d04c3d745:0x746d8e218a07f05f!8m2!3d-37.8185774!4d144.9590953">Melbourne, VIC, 3000</a></p>
-    </div>
-    
-      <div id="map"></div>
-      <script>
-        function initMap() {
-          var mapDiv = document.getElementById('map');
-          var map = new google.maps.Map(mapDiv, {
-              center: {lat: -37.818461, lng: 144.959057},
-              zoom: 13,
-              scrollwheel: false,
-              // disableDefaultUI: true
-          });
-          var marker = new google.maps.Marker({
-            // The below line is equivalent to writing:
-            // position: new google.maps.LatLng(-34.397, 150.644)
-            position: {lat: -37.818461, lng: 144.959057},
-            map: map
-          });
-          var isDraggable = !('ontouchstart' in document.documentElement);
-          var mapOptions = {
-            draggable: isDraggable,
-            scrollwheel: false
-          };
-          var contentString = '<div id="locContent">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<p id="firstHeading" class="firstHeading"><b>WDI Conf 2016</b></p>'+
-            '<div id="bodyContent">'+
-            '<p><b>Date:</b> October 31st, 2016</p>' +
-            '<p><b>Address:</b> Level 12A, 45 William Street</p>' +
-            '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CBD, Melbourne, 3000</p>' +
-            '</div>'+
-            '</div>';
+<h4 id="loc-title" class="center-align">Location</h4>
+<p class="center-align">Monday, 31st October, 2016</p>
+<p class="center-align">Level 12A, 45 William Street</p>
+<p class="center-align">Melbourne, VIC 3000</p>
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+<div id="loc-mainDiv">
 
-         // infowindow.open(map, marker);
-
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-        }
-      </script>
-      <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0RV6LFuTfd173OjponVWDK59PKFkr7sM&callback=initMap">
-      </script>
-
-    
+  <div id="loc-eventDetails">
+    <p><b>Date:</b> Monday, October 31st, 2016</p>
+    <p><b>Address:</b> <a href="https://www.google.com.au/maps/place/45+William+St,+Melbourne+VIC+3000/@-37.8185774,144.9569066,17z/data=!3m1!4b1!4m5!3m4!1s0x6ad65d4d04c3d745:0x746d8e218a07f05f!8m2!3d-37.8185774!4d144.9590953">Level 12/A, 45 William Street,</a></p>
+    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="https://www.google.com.au/maps/place/45+William+St,+Melbourne+VIC+3000/@-37.8185774,144.9569066,17z/data=!3m1!4b1!4m5!3m4!1s0x6ad65d4d04c3d745:0x746d8e218a07f05f!8m2!3d-37.8185774!4d144.9590953">Melbourne, VIC, 3000</a></p>
   </div>
+  <div id="map"></div>
+</div>
+
+<script>
+  function initMap() {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+        center: {lat: -37.818461, lng: 144.959057},
+        zoom: 13,
+        scrollwheel: false,
+        // disableDefaultUI: true
+    });
+    var marker = new google.maps.Marker({
+      // The below line is equivalent to writing:
+      // position: new google.maps.LatLng(-34.397, 150.644)
+      position: {lat: -37.818461, lng: 144.959057},
+      map: map
+    });
+    var isDraggable = !('ontouchstart' in document.documentElement);
+    var mapOptions = {
+      draggable: isDraggable,
+      scrollwheel: false
+    };
+    var contentString = '<div id="locContent">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<p id="firstHeading" class="firstHeading"><b>WDI Conf 2016</b></p>'+
+      '<div id="bodyContent">'+
+      '<p><b>Date:</b> October 31st, 2016</p>' +
+      '<p><b>Address:</b> Level 12A, 45 William Street</p>' +
+      '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CBD, Melbourne, 3000</p>' +
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+   // infowindow.open(map, marker);
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+  }
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0RV6LFuTfd173OjponVWDK59PKFkr7sM&callback=initMap">
+</script>
