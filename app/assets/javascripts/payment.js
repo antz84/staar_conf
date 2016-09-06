@@ -66,12 +66,30 @@ function stripeResponseHandler(status, response) {
       $("#payment").append($button);
 
       $( "#home-btn" ).click(function(event) {
+
+        //go back to homepage
+        $("#home-btn").on('click', function(event) {
+          ticketBox.selfUpdate(updateSeats);
+        });
+
+        //update seats left with lastest figures
+
+
         $('.button-collapse').sideNav('hide');
         $("#payment").empty();
         $paymentForm.appendTo( "#payment" );
         $form.find('.submit').prop('disabled', false);
         window.scrollTo(0, 0);
       });
+
+
+              function updateSeats(lastest) {
+                $(".seats").each(function() {
+                  var theId = $(this).closest('.talk').data('id');
+                  $(this).text("Tickets left: " + lastest[theId].seats);
+                });
+                // $(".seats").text("tickets left : " + lastest.seats);
+              }
 
     });
   }

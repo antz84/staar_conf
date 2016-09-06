@@ -137,20 +137,7 @@ $(document).ready(function() {
       $('.button-collapse').sideNav('hide');
     });
 
-    //go back to homepage
-    $("#home-btn").on('click', function(event) {
-      ticketBox.selfUpdate(updateSeats);
-    });
 
-    //update seats left with lastest figures
-
-    function updateSeats(lastest) {
-      $(".seats").each(function() {
-        var theId = $(this).closest('.talk').data('id');
-        $(this).text("Tickets left: " + lastest[theId].seats);
-      });
-      // $(".seats").text("tickets left : " + lastest.seats);
-    }
 
     //Create a summary of tickets bought
     function summary() {
