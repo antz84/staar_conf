@@ -6,6 +6,4 @@ Rails.application.routes.draw do
   get "/api/events", to: "api/events#list_events"
   post "/api/charges", to: "api/charges#create"
   root :to => 'events#index'
-
-  post "/charges", to: "charges#create"
 end

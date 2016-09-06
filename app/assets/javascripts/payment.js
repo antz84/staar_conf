@@ -24,8 +24,9 @@ function stripeResponseHandler(status, response) {
   } else {
     // Get the token ID:
 
-    var firstname = $form.find('#first-name').val();
-    var surname = $form.find('#surname').val();
+
+    var firstname = $form.find('#first_name').val();
+    var surname = $form.find('#last_name').val();
     var email_ = $form.find('#email').val();
 
     var token_ = response.id;
@@ -46,9 +47,31 @@ function stripeResponseHandler(status, response) {
                      tickets : alltickets
                    }
           }
+
     }).done(function(res){
-      console.log(JSON.stringify(res));
-      //clear everything and show payment confirmed page
+      console.log(res);
+      var $paymentForm = $(".payment-container").detach();
+      // var $paymentDiv = $('<div>', {class: "payment-container"});
+      var $confirmation = $('<h3>').text("Confirmation");
+      var $paymentSuccess = $('<h4>').text("Payment Successful");
+      var $emailed = $('<h4>').text("Your tickets have been emailed to you.");
+      var $seeYou = $('<h4>').text("See you there!");
+      var $button = $('<button>', {id: "home-btn"}).text("Home");
+
+      // $("#payment").append($paymentDiv);
+      $("#payment").append($confirmation);
+      $("#payment").append($paymentSuccess);
+      $("#payment").append($emailed);
+      $("#payment").append($seeYou);
+      $("#payment").append($button);
+
+      $( "#home-btn" ).click(function(event) {
+        $('.button-collapse').sideNav('hide');
+        $("#payment").empty();
+        $paymentForm.appendTo( "#payment" );
+        $form.find('.submit').prop('disabled', false);
+        window.scrollTo(0, 0);
+      });
 
     });
   }
