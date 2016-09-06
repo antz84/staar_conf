@@ -1,48 +1,43 @@
+#speakers-section {
+  background-color: #4184F3;
+  margin: 5em auto 0 auto;
+}
+
 #profile-pic {
-  height: 300px;
-  width: 400px;
-  overflow: hidden;
-  border:2px solid #FFFFFF;
- }
- #profile-pic {
   margin-top: 20px;
-  height: auto;
+  height: 150px;
   width: 150px;
-  border-radius: 10px;
- }
+  // border: white 3px solid;
+}
+
  #speak-accordian {
-  background-color: #3367D5;
-  color: white;
- }
- #speak-colapse {
   background-color: #4184F3;
   color: white;
+  padding-bottom: 2em;
  }
-//  #about-title {
-//   margin: auto;
-//   margin-top: 15%;
-//   width: 78%;
-//   padding: 1px;
-//   border-radius: 10px;
-//   color: #616161;
-//   border: solid 4px #3367D5;
-// }
+ #speak-colapse {
+  background-color: white;
+  color: white;
+ }
+ #speakers-title {
+   color: white;
+   background-color: #4184F3;
+   margin-top: 1em;
+   margin-bottom: 1em;
+  //  font-weight: 200;
+}
 
-/*
-  About scroll wheel
-*/
+.speak-text {
+  color: white;
+  margin: 0;
+  height: 2em;
+  font-weight: 200;
+}
 
-a.back-to-top {
-  display: none;
-  width: 40px;
-  height: 40px;
-  text-indent: -9999px;
-  position: fixed;
-  z-index: 999;
-  right: 20px;
-  bottom: 20px;
-  background: #4184F3 url("https://cdn0.iconfinder.com/data/icons/large-black-icons/40/Up_arrow_vote_like_upload.png") no-repeat center 43%;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  border-radius: 30px;
+.speak-para {
+  font-weight: 200;
+}
+
+.speak-name {
+  height: 1em;
 }
