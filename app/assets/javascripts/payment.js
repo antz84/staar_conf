@@ -68,9 +68,7 @@ function stripeResponseHandler(status, response) {
       $( "#home-btn" ).click(function(event) {
 
         //go back to homepage
-        $("#home-btn").on('click', function(event) {
-          ticketBox.selfUpdate(updateSeats);
-        });
+          exported.selfUpdate(updateSeats);
 
         //update seats left with lastest figures
 
