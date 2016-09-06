@@ -31,16 +31,16 @@ module Api
       amount = params[:amount].to_i * 100
       # binding.pry
       # Create a charge: this will charge the user's card
-      begin
-        charge = Stripe::Charge.create(
-          :amount => amount, # Amount in cents
-          :currency => "usd",
-          :source => token,
-          :description => "Example charge"
-        )
-        rescue Stripe::CardError => e
-        # The card has been declined
-      end
+      # begin
+      #   charge = Stripe::Charge.create(
+      #     :amount => amount, # Amount in cents
+      #     :currency => "usd",
+      #     :source => token,
+      #     :description => "Example charge"
+      #   )
+      #   rescue Stripe::CardError => e
+      #   # The card has been declined
+      # end
 
       #insertion...
       params[:info][:tickets].each do |key, value|
@@ -59,7 +59,7 @@ module Api
       end
 
       render json: {message: params[:info]}
-      
+
     end
   end
 end
