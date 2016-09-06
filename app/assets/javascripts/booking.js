@@ -1,4 +1,4 @@
-var total = 10;
+var exported;
 
 $(document).ready(function() {
 
@@ -26,7 +26,6 @@ $(document).ready(function() {
         render(res); //Populate the ticket listing page
         // console.log(ticketBox.toString());
         switchEvent();
-
       }
     );
 
@@ -34,16 +33,16 @@ $(document).ready(function() {
 
   function createTicketBoard( talks ) {
     // generate a section for each talk
-    var $talkList = $('<ul>', {class: 'talk-list collection'});
+    var $talkList = $('<div>', {class: 'talk-list collection'});
     var $pricePanel = $('<div>', {class: 'pricePanel'}).text("Total: $" + 0);
 
     talks.forEach(
       function (talk){
         // element generation
-        var $talk = $('<li>', {class: "talk"}).data('id', talk.id);
+        var $talk = $('<div>', {class: "talk"}).data('id', talk.id);
           var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
           var $price = $('<div>', {class: 'price'}).text("$" + talk.price);
-          var $seats = $('<div>', {class: 'seats'}).text("50 seats");
+          var $seats = $('<div>', {class: 'seats'}).text("Tickets Left: " + talk.seats);
           var $ticketForm = $('<div>', {class: 'ticketForm'});
             var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
             var $minusBtn = $('<button>', {class: 'minus'}).text("-");
@@ -93,11 +92,12 @@ $(document).ready(function() {
     function updateTotal() {
       $('.ticketQty').each(function() {
         var t_id = $(this).closest('.talk').data('id');
-
         // //validation here: +number only: ^\d+$
-        if( /^\d+$/.test($(this).val())){
+        if( /^\d+$/.test($(this).val()) && +$(this).val() <= ticketBox.getSeats(t_id) ){
           var qty = +$(this).val();
           ticketBox.updateTickets(t_id, qty);
+        }else if( +$(this).val() > ticketBox.getSeats(t_id)){
+          $(this).val(ticketBox.getSeats(t_id));
         }else{
           $(this).val(0);
           ticketBox.updateTickets(t_id, 0);
@@ -126,10 +126,18 @@ $(document).ready(function() {
 
     //click to proceed to payment
 
-    $('#book-btn').on('click', function(){summary();
-      total = ticketBox.getTotal();
-      console.log(total);
+    $('#book-btn').on('click', function(){
+      $('.button-collapse').sideNav('hide');
+      summary();//Display the payment summary
+      exported = ticketBox;
+      console.log(ticketBox.getTotal());
     });
+
+    $( "#pay-btn" ).click(function(event) {
+      $('.button-collapse').sideNav('hide');
+    });
+
+
 
     //Create a summary of tickets bought
     function summary() {
@@ -163,8 +171,6 @@ $(document).ready(function() {
 
   }
 
-
-
 });
 
 
@@ -184,10 +190,27 @@ var shoppingCart = function (ticket_arr) {
 
   return {
       updateTickets : function(t_id, qty) {
+        if(qty!==0){
           ticketBucket[t_id] = qty;
+        }
+      },
+      selfUpdate : function(callback){
+        $.ajax({
+          type: "GET",
+          url: 'http://localhost:3000/api/events'
+        }).done(
+          function(res){
+            console.log(JSON.stringify(res));
+            ticketList = initialize(res);
+            callback(ticketList);
+          }
+        );
       },
       getTopic : function(t_id) {
         return ticketList[t_id].topic
+      },
+      getSeats : function(t_id) {
+        return ticketList[t_id].seats
       },
       getPrice : function(t_id) {
         return ticketList[t_id].price
@@ -215,7 +238,7 @@ var shoppingCart = function (ticket_arr) {
         $.each(ticketBucket, function(k, v){
           console.log(k + " : " + v);
         });
-        return ticketList.toString();
+        // return ticketList.toString();
       }
   }
 }

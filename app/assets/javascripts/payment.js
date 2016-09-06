@@ -16,45 +16,78 @@ function stripeResponseHandler(status, response) {
   // Grab the form:
   var $form = $('#payment-form');
 
-  if (response.error) { // Problem!
-
+  if (response.error) {
     // Show the errors on the form:
     $form.find('.payment-errors').text(response.error.message);
     $form.find('.submit').prop('disabled', false); // Re-enable submission
 
-  } else { // Token was created!
-
+  } else {
     // Get the token ID:
-    var token = response.id;
 
-    // Insert the token ID into the form so it gets submitted to the server:
-    // $form.append($('<input type="hidden" name="stripeToken">').val(token));
 
-    // Submit the form:
-    // console.log($form.get(0));
-    // console.log($("#cardNo").val());
-    // console.log($("#exp_m").val());
-    // console.log($("#cvc").val());
-    var amount = $("#total").val();
-    var first_name = $("#first_name").val();
-    var last_name = $("#last_name").val();
-    var email = $("#email").val();
-    // $form.get(0).submit();
-    // ajax
+    var firstname = $form.find('#first_name').val();
+    var surname = $form.find('#last_name').val();
+    var email_ = $form.find('#email').val();
+
+    var token_ = response.id;
+    var amount_ = exported.getTotal();
+    var alltickets = exported.getAllTickets();
+    console.log(amount_);
+    console.log(token_);
+    console.log(exported.toString());
 
     $.ajax({
       type:"POST",
       url:"http://localhost:3000/api/charges",
-      data:{token_ : token, amount_ : amount, first_name : first_name, last_name: last_name, email : email}
+      data:{token : token_,
+            amount : amount_,
+            info : { fname : firstname,
+                     sname : surname,
+                     email : email_,
+                     tickets : alltickets
+                   }
+          }
+
     }).done(function(res){
       console.log(res);
-      $(".payment-container").detach();
-      
+      var $paymentForm = $(".payment-container").detach();
+      // var $paymentDiv = $('<div>', {class: "payment-container"});
+      var $confirmation = $('<h3>').text("Confirmation");
+      var $paymentSuccess = $('<h4>').text("Payment Successful");
+      var $emailed = $('<h4>').text("Your tickets have been emailed to you.");
+      var $seeYou = $('<h4>').text("See you there!");
+      var $button = $('<button>', {id: "home-btn"}).text("Home");
+
+      // $("#payment").append($paymentDiv);
+      $("#payment").append($confirmation);
+      $("#payment").append($paymentSuccess);
+      $("#payment").append($emailed);
+      $("#payment").append($seeYou);
+      $("#payment").append($button);
+
+      $( "#home-btn" ).click(function(event) {
+
+        //go back to homepage
+          exported.selfUpdate(updateSeats);
+
+        //update seats left with lastest figures
 
 
+        $('.button-collapse').sideNav('hide');
+        $("#payment").empty();
+        $paymentForm.appendTo( "#payment" );
+        $form.find('.submit').prop('disabled', false);
+        window.scrollTo(0, 0);
+      });
 
-      // console.log(JSON.stringify(res));
-      //clear everything and show payment confirmed page
+
+              function updateSeats(lastest) {
+                $(".seats").each(function() {
+                  var theId = $(this).closest('.talk').data('id');
+                  $(this).text("Tickets left: " + lastest[theId].seats);
+                });
+                // $(".seats").text("tickets left : " + lastest.seats);
+              }
 
     });
   }
