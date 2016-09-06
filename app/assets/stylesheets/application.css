@@ -14,6 +14,14 @@
  *= require_self
  */
 
+h1, h2, h3, h4, h5, h6, p {
+ color: #616161;
+}
+
+h4 {
+ font-weight: 300;
+}
+
 #map {
   width: 100%;
   height: 400px;
@@ -23,10 +31,21 @@
   margin-left: 1em;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  color: #616161;
+#tt-topRow {
+  background-color: #4184F3;
+  text-align: center;
 }
 
-h4 {
-  font-weight: 300;
+tr:hover {
+  background-color: lightblue;
+  transition: 1s;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tt-greyRow {
+  background-color: #e6e6e6;
 }
