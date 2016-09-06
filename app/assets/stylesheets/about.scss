@@ -26,23 +26,7 @@
 
 #about-wrap{
 	background-color: #4184F3;
+	margin-top: 5em;
 }
 
-/*
-	About scroll wheel
-*/
 
-a.back-to-top {
-	display: none;
-	width: 40px;
-	height: 40px;
-	text-indent: -9999px;
-	position: fixed;
-	z-index: 999;
-	right: 20px;
-	bottom: 20px;
-	background: #4184F3 url("https://cdn0.iconfinder.com/data/icons/large-black-icons/40/Up_arrow_vote_like_upload.png") no-repeat center 43%;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-}
