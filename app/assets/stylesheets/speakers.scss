@@ -11,6 +11,7 @@
   margin-top: 20px;
   height:auto;
   width: 150px;
+  border-radius: 10px;
 
  }
 
@@ -32,4 +33,23 @@
   border-radius: 10px;
   color: #616161;
   border: solid 4px #3367D5;
+}
+
+/*
+  About scroll wheel
+*/
+
+a.back-to-top {
+  display: none;
+  width: 40px;
+  height: 40px;
+  text-indent: -9999px;
+  position: fixed;
+  z-index: 999;
+  right: 20px;
+  bottom: 20px;
+  background: #4184F3 url("https://cdn0.iconfinder.com/data/icons/large-black-icons/40/Up_arrow_vote_like_upload.png") no-repeat center 43%;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
 }
