@@ -22,3 +22,22 @@
 #loc-eventDetails {
   margin-left: 1em;
 }
+
+#tt-topRow {
+  background-color: #4184F3;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: lightblue;
+  transition: 1s;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tt-greyRow {
+  background-color: #e6e6e6;
+}
