@@ -14,6 +14,14 @@
  *= require_self
  */
 
+h1, h2, h3, h4, h5, h6, p {
+ color: #616161;
+}
+
+h4 {
+ font-weight: 300;
+}
+
 #map {
   width: 100%;
   height: 400px;

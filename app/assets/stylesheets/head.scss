@@ -11,7 +11,7 @@ video {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   animation-delay: 2s;
-  color: #616161;
+  line-height: 1.3em;
 }
 
 @-webkit-keyframes fadeInDown {
@@ -50,7 +50,7 @@ video {
 
 }
 
-#submit-btn, #back-btn #home-btn {
+#submit-btn, #back-btn, #home-btn {
   background-color: #4184F3;
   margin: 0 auto;
 }
@@ -60,10 +60,32 @@ video {
 }
 
 .menu-item {
-  color: #616161;
   font-weight: 300;
 }
 
 #home-btn {
+  margin-top: 11em;
   width: 100%;
+}
+
+#tick {
+  display: block;
+  margin: 1em auto 0 auto;
+  width: 84px;
+}
+
+.line-height {
+  line-height: 1.5em;
+}
+
+.line-height-h4 {
+  line-height: 1.3em;
+}
+
+#payment-successful, #payment-text, #payment-text2 {
+  color: black;
+}
+
+#payment-text, #payment-text2 {
+  font-weight: 300;
 }
