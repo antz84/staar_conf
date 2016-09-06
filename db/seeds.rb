@@ -63,3 +63,4 @@
 # p4.email = '1@23.com'
 # p4.event_id = 7
 # p4.save
+# rails g migration add_session_time_to_dishes user_id:integer

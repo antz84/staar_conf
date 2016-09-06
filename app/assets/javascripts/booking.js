@@ -42,6 +42,7 @@ $(document).ready(function() {
         var $talk = $('<div>', {class: "talk"}).data('id', talk.id);
           var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
           var $price = $('<div>', {class: 'price'}).text("$" + talk.price);
+          var $time = $('<div>', {class: 'time'}).text(talk.session_time);
           var $seats = $('<div>', {class: 'seats'}).text("Tickets Left: " + talk.seats);
           var $ticketForm = $('<div>', {class: 'ticketForm'});
             var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
@@ -54,6 +55,7 @@ $(document).ready(function() {
         $ticketForm.append($plusBtn);
 
         $talk.append($topic);
+        $talk.append($time);
         $talk.append($price);
         $talk.append($seats);
         $talk.append($ticketForm);
@@ -180,7 +182,7 @@ var shoppingCart = function (ticket_arr) {
   var initialize = function( t_arr ) {
     var t_obj = {};
     t_arr.forEach(function(t) {
-        t_obj[t.id] = {topic: t.topic, price: t.price, seats: t.seats}
+        t_obj[t.id] = {topic: t.topic, time: t.session_time,  price: t.price, seats: t.seats}
     });
     return t_obj;
   }
