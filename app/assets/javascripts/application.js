@@ -21,4 +21,5 @@
 // = require booking
 // = require payment
 // = require confirmation
+// = require head
 // = require main
