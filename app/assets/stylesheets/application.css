@@ -22,3 +22,11 @@
 #loc-eventDetails {
   margin-left: 1em;
 }
+
+h1, h2, h3, h4, h5, h6, p {
+  color: #616161;
+}
+
+h4 {
+  font-weight: 300;
+}

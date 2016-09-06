@@ -1,32 +1,17 @@
 
 #about-content{
-	margin: auto;
-	margin-top: 15%;
-	width: 85%;
-	padding: 10px;
-	border-radius: 10px;
-	color: 616161;
-	border: solid 4px #3367D5;
-}
-#about-image{
-	background-image: url("http://thebridge.jp/wp/wp-content/uploads/2011/12/P1000739.jpg");
-	width: 200px;
-	height: 100px;
-}
-
-#about-title{
-	margin: auto;
-	margin-top: 15%;
-	width: 78%;
-	padding: 1px;
-	border-radius: 10px;
-	color: #616161;
-	border: solid 4px #3367D5;
-}
-
-#about-wrap{
+	margin: 5em auto 0 auto;
 	background-color: #4184F3;
-	margin-top: 5em;
+	color: white;
+	padding: 1em;
 }
 
+#about-title, .about-p {
+	color: white;
+}
 
+.about-p {
+	font-weight: 100;
+	// text-align: justify;
+  // text-justify: inter-word; //for IE
+}
