@@ -16,27 +16,38 @@ function stripeResponseHandler(status, response) {
   // Grab the form:
   var $form = $('#payment-form');
 
-  if (response.error) { // Problem!
-
+  if (response.error) {
     // Show the errors on the form:
     $form.find('.payment-errors').text(response.error.message);
     $form.find('.submit').prop('disabled', false); // Re-enable submission
 
-  } else { // Token was created!
-
+  } else {
     // Get the token ID:
-    var token = response.id;
 
-    var amount = $("#total").val();
-    var first_name = $("#first_name").val();
-    var last_name = $("#last_name").val();
-    var email = $("#email").val();
-    // $form.get(0).submit();
+
+    var firstname = $form.find('#first_name').val();
+    var surname = $form.find('#last_name').val();
+    var email_ = $form.find('#email').val();
+
+    var token_ = response.id;
+    var amount_ = exported.getTotal();
+    var alltickets = exported.getAllTickets();
+    console.log(amount_);
+    console.log(token_);
+    console.log(exported.toString());
 
     $.ajax({
       type:"POST",
       url:"http://localhost:3000/api/charges",
-      data:{token_ : token, amount_ : amount, first_name : first_name, last_name: last_name, email : email}
+      data:{token : token_,
+            amount : amount_,
+            info : { fname : firstname,
+                     sname : surname,
+                     email : email_,
+                     tickets : alltickets
+                   }
+          }
+
     }).done(function(res){
       console.log(res);
       var $paymentForm = $(".payment-container").detach();
@@ -55,12 +66,28 @@ function stripeResponseHandler(status, response) {
       $("#payment").append($button);
 
       $( "#home-btn" ).click(function(event) {
+
+        //go back to homepage
+          exported.selfUpdate(updateSeats);
+
+        //update seats left with lastest figures
+
+
         $('.button-collapse').sideNav('hide');
         $("#payment").empty();
         $paymentForm.appendTo( "#payment" );
         $form.find('.submit').prop('disabled', false);
         window.scrollTo(0, 0);
       });
+
+
+              function updateSeats(lastest) {
+                $(".seats").each(function() {
+                  var theId = $(this).closest('.talk').data('id');
+                  $(this).text("Tickets left: " + lastest[theId].seats);
+                });
+                // $(".seats").text("tickets left : " + lastest.seats);
+              }
 
     });
   }
