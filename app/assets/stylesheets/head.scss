@@ -50,7 +50,7 @@ video {
 
 }
 
-#submit-btn, #back-btn {
+#submit-btn, #back-btn #home-btn {
   background-color: #4184F3;
   margin: 0 auto;
 }
@@ -62,4 +62,8 @@ video {
 .menu-item {
   color: #616161;
   font-weight: 300;
+}
+
+#home-btn {
+  width: 100%;
 }
