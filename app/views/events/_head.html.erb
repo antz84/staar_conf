@@ -1,6 +1,6 @@
 <!-- this section is the heading for the mobile version -->
 <div class="smallScreen">
-  
+
   <video id="top" class="responsive-video center-align section scrollspy" width="320" height="240" autoplay>
     <source src="https://www.google.com/calendar/about/assets/videos/google-calendar-loop.mp4" type="video/mp4">
     <source src="https://www.google.com/calendar/about/assets/videos/google-calendar-loop.webm" type="video/webm">
@@ -10,8 +10,6 @@
   <h4 class="title-msg animated fadeInDown center-align">Web Development Conference</h4>
   <h4 class="title-msg animated fadeInDown center-align">31 Oct 2016</h4>
   <a id="buy-btn" href="#" data-activates="book" class="button-collapse waves-effect waves-light btn-large title-msg animated fadeInDown">Buy Tickets</a>
-
-
 
   <a href="#about-para">
     <div class="divider"></div>
@@ -26,7 +24,7 @@
       <h5 class="center-align menu-item">Location</h5>
     </div>
   </a>
- 
+
   <a href="#about-para">
     <div class="divider"></div>
     <div class="section">
@@ -85,8 +83,10 @@
         </div>
 
       </div>
-      <a id="book-back-btn" class="waves-effect waves-light btn-large">Back</a>
-      <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book</a>
+      <div class="book-btn-container">
+        <a id="book-back-btn" class="waves-effect waves-light btn-large">Back</a>
+        <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book</a>
+      </div>
 </div>
 
 
@@ -141,7 +141,7 @@
           </div>
         </div>
         <input id="total" name="totalPrice" class="total-price" type="hidden" value="100">
-        <div class="row">
+        <div id="btn-row" class="row">
           <div class="col s6">
             <a id="back-btn" class="waves-effect waves-light btn-large">Back</a>
           </div>

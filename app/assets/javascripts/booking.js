@@ -81,8 +81,8 @@ $(document).ready(function() {
         $ticketForm.append($minusBtn);
         $ticketForm.append($plusBtn);
 
-          $priceSeat.append($price);
-          $priceSeat.append($seats);
+        $priceSeat.append($price);
+        $priceSeat.append($seats);
 
         $ticketEntry.append($ticketQty);
         $ticketEntry.append($priceSeat);
