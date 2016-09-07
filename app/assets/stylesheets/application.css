@@ -9,36 +9,7 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *= require_booking
+ *
  *= require_tree .
  *= require_self
  */
-
-h1, h2, h3, h4, h5, h6, p {
- color: #616161;
-}
-
-#loc-eventDetails {
-  margin-left: 1em;
-h4 {
- font-weight: 300;
-}
-
-/*
-  About scroll wheel
-*/
-
-a.back-to-top {
-  position: fixed;
-  right: 2em;
-  bottom: 2em;
-  background: #3367D5;
-}
-
-.up-arrow {
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
