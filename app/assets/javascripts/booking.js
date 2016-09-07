@@ -99,51 +99,73 @@ $(document).ready(function() {
       }
     );
 
-    // $talkList.append("<a id='book-btn' href='#' data-activates='payment' class='button-collapse waves-effect waves-light btn'>Book</a>");
     $('.ticketing').append($talkList);
 
     $('.ticketing').append($pricePanel);
 
     //event bundling
     $('.minus').on('click', function(event) {
-      var $qty = $(event.target).closest('.ticketForm').find('.ticketQty');
+      var $qty = $(event.target).closest('.talk').find('.ticketQty');
+      var ticket_id = $(event.target).closest('.talk').data('id');
       var currentQty = Number($qty.val());
-      console.log($qty.val());
       if(currentQty !== 0) {
         $qty.val(currentQty-1);
-        updateTotal();
+        updateTotal(ticket_id, currentQty-1);
         // debugger
       }else{
-        updateTotal();
+        updateTotal(ticket_id, 0);
       }
     });
 
     $('.plus').on('click', function(event) {
       var $qty = $(event.target).closest('.talk').find('.ticketQty');
+      var ticket_id = $(event.target).closest('.talk').data('id');
       var currentQty = +$qty.val();
       $qty.val(currentQty+1);
-      updateTotal();
+      updateTotal(ticket_id, currentQty+1);
     });
 
-    $('.ticketQty').on('focusout', function(){updateTotal();});
+    $('.ticketQty').on('focusout', function(event){
+      var $qty = $(event.target).closest('.talk').find('.ticketQty');
+      var ticket_id = $(event.target).closest('.talk').data('id');
+      updateTotal(ticket_id, $qty.val());
+    });
 
-    function updateTotal() {
-      $('.ticketQty').each(function() {
-        var t_id = $(this).closest('.talk').data('id');
-        // //validation here: +number only: ^\d+$
-        if( /^\d+$/.test($(this).val()) && +$(this).val() <= ticketBox.getSeats(t_id) ){
-          var qty = +$(this).val();
-          ticketBox.updateTickets(t_id, qty);
-        }else if( +$(this).val() > ticketBox.getSeats(t_id)){
-          $(this).val(ticketBox.getSeats(t_id));
-        }else{
-          $(this).val(0);
-          ticketBox.updateTickets(t_id, 0);
-        }
+    function updateTotal(t_id, qty) {
 
-      });
-      $('.pricePanel').text("Total: $" + ticketBox.getTotal());
+          // //validation here: +number only: ^\d+$
+          if( /^\d+$/.test(qty) && +qty <= ticketBox.getSeats(t_id) ){
+            $("#"+qty).find('.ticketQty').val(qty);
+            var qty = +qty;
+            console.log(qty);
+            ticketBox.updateTickets(t_id, qty);
+          }else if( +qty > ticketBox.getSeats(t_id)){
+            $("#"+qty).find('.ticketQty').val(ticketBox.getSeats(t_id));
+          }else{
+            $("#"+qty).find('.ticketQty').val(0);
+            ticketBox.updateTickets(t_id, 0);
+          }
+          $('.pricePanel').text("Total: $" + ticketBox.getTotal());
     }
+
+    // function updateTotal() {
+    //   $('.ticketQty').each(function() {
+    //     var t_id = $(this).closest('.talk').data('id');
+    //     // //validation here: +number only: ^\d+$
+    //     if( /^\d+$/.test($(this).val()) && +$(this).val() <= ticketBox.getSeats(t_id) ){
+    //       var qty = +$(this).val();
+    //       console.log(qty);
+    //       ticketBox.updateTickets(t_id, qty);
+    //     }else if( +$(this).val() > ticketBox.getSeats(t_id)){
+    //       $(this).val(ticketBox.getSeats(t_id));
+    //     }else{
+    //       $(this).val(0);
+    //       ticketBox.updateTickets(t_id, 0);
+    //     }
+    //
+    //   });
+    //   $('.pricePanel').text("Total: $" + ticketBox.getTotal());
+    // }
 
   }
 
@@ -228,9 +250,9 @@ var shoppingCart = function (ticket_arr) {
 
   return {
       updateTickets : function(t_id, qty) {
-        if(qty!==0){
+        //if(qty!==0){
           ticketBucket[t_id] = qty;
-        }
+        //}
       },
       selfUpdate : function(callback){
         $.ajax({

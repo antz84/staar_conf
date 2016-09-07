@@ -23,8 +23,6 @@ function stripeResponseHandler(status, response) {
 
   } else {
     // Get the token ID:
-
-
     var firstname = $form.find('#first_name').val();
     var surname = $form.find('#last_name').val();
     var email_ = $form.find('#email').val();
@@ -49,45 +47,32 @@ function stripeResponseHandler(status, response) {
           }
 
     }).done(function(res){
-      console.log(res);
-      var $paymentForm = $(".payment-container").detach();
-      // var $paymentDiv = $('<div>', {class: "payment-container"});
-      var $confirmation = $('<h3>').text("Confirmation");
-      var $paymentSuccess = $('<h4>').text("Payment Successful");
-      var $emailed = $('<h4>').text("Your tickets have been emailed to you.");
-      var $seeYou = $('<h4>').text("See you there!");
-      var $button = $('<button>', {id: "home-btn"}).text("Home");
 
-      // $("#payment").append($paymentDiv);
-      $("#payment").append($confirmation);
-      $("#payment").append($paymentSuccess);
-      $("#payment").append($emailed);
-      $("#payment").append($seeYou);
-      $("#payment").append($button);
+      console.log(res);
+      $("#payment").empty();
+
+      var page_content = "<div class='.done'>" +
+        "<i id='tick' class='large material-icons'>done</i>" +
+        "<h4 id='payment-successful' class='center-align line-height-h4'>Payment Successful</h4>" +
+        "<p id='payment-text' class='center-align line-height'>Your tickets along with your payment confirmation have been emailed to you</p>" +
+        "<p id='payment-text2' class='center-align line-height'>See you there!</p>" +
+        "<a id='home-btn' class='waves-effect waves-light btn-large'>Home</a></div>";
+
+      $("#payment").append(page_content);
 
       $( "#home-btn" ).click(function(event) {
-
         //go back to homepage
-          exported.selfUpdate(updateSeats);
-
-        //update seats left with lastest figures
-
-
+        exported.selfUpdate(updateSeats);
         $('.button-collapse').sideNav('hide');
-        $("#payment").empty();
-        $paymentForm.appendTo( "#payment" );
-        $form.find('.submit').prop('disabled', false);
         window.scrollTo(0, 0);
       });
 
-
-              function updateSeats(lastest) {
-                $(".seats").each(function() {
-                  var theId = $(this).closest('.talk').data('id');
-                  $(this).text("Tickets left: " + lastest[theId].seats);
-                });
-                // $(".seats").text("tickets left : " + lastest.seats);
-              }
+      function updateSeats(lastest) {
+        $(".seats").each(function() {
+          var theId = $(this).closest('.talk').data('id');
+          $(this).text("Tickets left: " + lastest[theId].seats);
+        });
+      }
 
     });
   }
