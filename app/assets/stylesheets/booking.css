@@ -1,10 +1,10 @@
 .talkList{
   clear:both;
 }
+
 .talk{
   width:80%;
   margin: 10% auto;
-  background-color: #4184F3;
 }
 
 .talk
@@ -15,7 +15,8 @@
 }
 
 .talk-header
-.time{
+.time
+{
   text-align: center;
   width: 100%;
   font-size: 0.7em;
@@ -42,9 +43,18 @@
   font-size: 0.7em;
   text-align:center;
 }
+
 .minus, .plus{
-  width: 50%;
+  width: 49%;
   font-size: 2em;
   float: right;
   background-color: #4184F3 !important;
+}
+
+.minus {
+  margin-left: 2px;
+}
+
+.plus {
+  margin-right: 2px;
 }
