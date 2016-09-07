@@ -1,6 +1,7 @@
 #sponsors-section {
   background-color: #4184F3;
   padding-top: 2em;
+  padding-bottom: 1.5em;
   margin: 5em auto 0 auto;
 }
 
@@ -16,4 +17,16 @@
 .logo {
   margin: 0 auto;
   display: block;
+}
+
+#buy-btn-btm {
+  background-color: #4184F3;
+  display: block;
+  margin: 5em auto 5em auto;
+  width: 11em;
+  font-weight: bold;
+}
+
+.uber-container, .asana-container {
+  padding-top: 1em;
 }
