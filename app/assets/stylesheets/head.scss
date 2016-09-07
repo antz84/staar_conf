@@ -1,3 +1,35 @@
+h1, h2, h3, h4, h5, h6, p, th, td {
+ color: #616161;
+}
+
+th {
+  font-weight: 400;
+}
+
+
+h4, td {
+ font-weight: 300;
+}
+
+/*
+  About scroll wheel
+*/
+
+a.back-to-top {
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  background: #3367D5;
+}
+
+.up-arrow {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
 video {
   margin: 2em auto;
   width: auto;
@@ -47,7 +79,6 @@ video {
   margin: 2em auto 4em auto;
   width: 11em;
   font-weight: bold;
-
 }
 
 #submit-btn, #back-btn, #home-btn {
