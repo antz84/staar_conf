@@ -1,6 +1,7 @@
 #map {
   width: 100%;
   height: 400px;
+  margin-top: 5em;
 }
 
 #loc-eventDetails {
@@ -28,4 +29,12 @@ table, th, td {
 
 #loc-title {
   margin: 2em auto 1em auto;
+}
+
+.address {
+  color: #4184F3;
+}
+
+.loc-text {
+  font-weight: 300;
 }
