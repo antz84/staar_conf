@@ -10,12 +10,12 @@ class TicketsController < ApplicationController
     @ticket.surname = params[:surname]
     @ticket.email = params[:email]
     @ticket.event_id = params[:event_id]
-    respond_to do |format|
-      if @ticket.save
-        # Tell the UserMailer to send a welcome email after save
-        TicketMailer.welcome_email(@ticket.email).deliver
-        puts "mail sent"
-      end
+    if @ticket.save
+      # Tell the UserMailer to send a welcome email after save
+      TicketMailer.welcome_email(@ticket.email).deliver
+      # puts "mail sent"
     end
 
 end
+
+        # TicketMailer.welcome_email(t.email).deliver
