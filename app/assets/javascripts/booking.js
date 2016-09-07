@@ -33,7 +33,7 @@ $(document).ready(function() {
 
   function createTicketBoard( talks ) {
     // generate a section for each talk
-    var $talkList = $('<div>', {class: 'talk-list collection'});
+    var $talkList = $('<div>', {class: 'talk-list container'});
     var $pricePanel = $('<div>', {class: 'pricePanel'}).text("Total: $" + 0);
 
     talks.forEach(

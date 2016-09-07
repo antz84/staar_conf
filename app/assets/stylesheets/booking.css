@@ -1,10 +1,49 @@
-.topic{
+.talkList{
+  clear:both;
+}
+.talk{
+  width:80%;
+  margin: 10% auto;
+  background-color: #4184F3;
+}
+
+.talk
+.talk-header
+{
   text-align: center;
   width: 100%;
 }
 
-
-.price-seat .ticketQty{
-  margin: 0;
+.talk-header
+.time{
   text-align: center;
+  width: 100%;
+  font-size: 0.7em;
+}
+
+.talk-header
+.topic
+{
+  text-align: center;
+  width: 100%;
+}
+
+.ticketEntry .ticketQty{
+  margin: 0 20%;
+  width: 60%;
+  height: 2em;
+  text-align: center;
+  background-color:#fff;
+}
+
+.price-seat div{
+  float: right;
+  width:50%;
+  font-size: 0.7em;
+  text-align:center;
+}
+.ticketForm button{
+  width: 50%;
+  font-size: 2em;
+  float: right;
 }

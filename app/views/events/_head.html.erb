@@ -9,31 +9,6 @@
 <h4 class="title-msg animated fadeInDown center-align">31 Oct 2016</h4>
 <a id="buy-btn" href="#" data-activates="book" class="button-collapse waves-effect waves-light btn-large title-msg animated fadeInDown">Buy Tickets</a>
 
-<div id="book" class="side-nav">
-
-  <div class="ticketing">
-    <div class="talk-list container">
-      <div class="talk row" id="1">
-
-        <div class="topic col s8">HTML Sample</div>
-        <div class="time col s8">31st, Oct @ 13:00 - 13:30</div>
-
-        <div class="price-seat col s8">
-          <input class="ticketQty" type="text" value=100>
-          <div class="price col s4">Price: $50</div>
-          <div class="seats col s4">Seats left: 50</div>
-        </div>
-
-        <div class="ticketForm col s8">
-          <button class="minus col s4"> - </button>
-          <button class="plus col s4"> + </button>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <a href="#about-content">
   <div class="divider"></div>
@@ -72,8 +47,37 @@
 </a>
 
 <div id="book" class="side-nav">
-  <div class="ticketing"></div>
-  <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book</a>
+
+      <div class="ticketing">
+
+        <div class="talk-list container">
+          <div class="talk" id="1">
+
+            <div class="talk-header">
+              <div class="topic">HTML Sample</div>
+              <div class="time">31st, Oct @ 13:00 - 13:30</div>
+            </div>
+
+            <div class="ticketEntry">
+              <input class="ticketQty" type="text" value=100>
+              <div class="price-seat">
+                <div class="price">Price: $50</div>
+                <div class="seats">Seats left: 50</div>
+              </div>
+            </div>
+
+            <div class="ticketForm">
+              <button class="minus"> - </button>
+              <button class="plus"> + </button>
+            </div>
+
+          </div>
+
+        </div>
+        <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book</a>
+
+      </div>
+
 </div>
 
 <div id="payment" class="side-nav">
