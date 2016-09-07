@@ -42,8 +42,9 @@
   font-size: 0.7em;
   text-align:center;
 }
-.ticketForm button{
+.minus, .plus{
   width: 50%;
   font-size: 2em;
   float: right;
+  background-color: #4184F3 !important;
 }

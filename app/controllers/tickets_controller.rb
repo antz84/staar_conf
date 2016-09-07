@@ -14,6 +14,7 @@ class TicketsController < ApplicationController
       if @ticket.save
         # Tell the UserMailer to send a welcome email after save
         TicketMailer.welcome_email(@ticket.email).deliver
+        puts "mail sent"
       end
     end
 

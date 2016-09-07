@@ -65,7 +65,9 @@ $(document).ready(function() {
       }
     );
 
+    // $talkList.append("<a id='book-btn' href='#' data-activates='payment' class='button-collapse waves-effect waves-light btn'>Book</a>");
     $('.ticketing').append($talkList);
+
     $('.ticketing').append($pricePanel);
 
     //event bundling
