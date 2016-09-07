@@ -3,7 +3,7 @@ module Api
   class EventsController < ApplicationController
 
     def list_events
-      events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price, COALESCE(events.seats - sum(tickets.number),events.seats) as seats").group("events.id, events.topic, events.price, events.seats")
+      events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price, events.session_time, COALESCE(events.seats - sum(tickets.number),events.seats) as seats").group("events.id, events.topic, events.price, events.session_time, events.seats")
       # events = Event.left_outer_joins(:tickets).select("events.id, events.topic, events.price, events.seats, tickets.event_id ,tickets.number")
       render json: events
     end
