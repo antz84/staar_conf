@@ -40,6 +40,9 @@ module Api
           if(!record.save)
             render json: {success: false}
           end
+
+          TicketMailer.welcome_email(record.email).deliver
+
       end
 
       render json: {message: params[:info]}
