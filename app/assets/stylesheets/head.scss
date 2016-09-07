@@ -7,7 +7,7 @@ th {
 }
 
 
-h4, td {
+h4, td, {
  font-weight: 300;
 }
 
@@ -84,6 +84,14 @@ video {
 #submit-btn, #back-btn, #home-btn {
   background-color: #4184F3;
   margin: 0 auto;
+}
+
+#submit-btn {
+  height: 48px;
+}
+
+#btn-row {
+  margin-bottom: 2em;
 }
 
 #payment {
@@ -192,9 +200,3 @@ video {
 #navCloseBtn {
   border: none;
 }
-
-
-
-
-
-
