@@ -1,3 +1,4 @@
+
 #speakers-section {
   background-color: #4184F3;
   margin: 5em auto 0 auto;
@@ -40,4 +41,51 @@
 
 .speak-name {
   height: 1em;
+}
+
+
+.speak-card-web{
+  max-width: 25%;
+}
+
+@media (min-width: 65em) {
+.speaker-hide-on-web {
+display: none;
+  }
+}
+
+@media (max-width: 66em){
+.speak-web-version{
+  display: none;
+  }
+}
+
+
+.card{
+  max-width: 24%;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+
+}
+.row{
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5em;
+  margin-top: 1em;
+  width: 100%;
+}
+
+.card-title{
+  background-color:rgba(0, 0, 0, 0.5);
+  margin:0;
+  padding: 0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.all-speakers{
+  text-align: center;
 }
