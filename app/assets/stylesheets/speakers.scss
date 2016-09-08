@@ -61,7 +61,7 @@ display: none;
 }
 
 
-.card{
+.speakers-card{
   max-width: 24%;
   margin: 0;
   padding: 0;
@@ -69,7 +69,8 @@ display: none;
   vertical-align: top;
   display: inline-block;
 }
-.row{
+
+.speakers-row{
   margin: 0;
   padding: 0;
   margin-bottom: 5em;
@@ -78,7 +79,7 @@ display: none;
   display: flex;
 }
 
-.card-title{
+.speakers-title {
   background-color:rgba(0, 0, 0, 0.5);
   margin:0;
   padding: 0;
@@ -91,9 +92,9 @@ display: none;
   text-align: center;
 }
 
-.card-content{
-  height: 600px;
-}
+// .card-content{
+//   height: 600px;
+// }
 
 .ray-pic{
   padding-bottom: 10px;
