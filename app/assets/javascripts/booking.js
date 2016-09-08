@@ -180,33 +180,80 @@ $(document).ready(function() {
 
 
     //Create a summary of tickets bought
+
+    // <div class="ticket">
+    //   <div class="topic_booked">Handling Asycn</div>
+    //   <div class="qty_booked">3</div>
+    //   <div class="single_price">25</div>
+    //   <div class="sub_total">75</div>
+    // </div>
+
+    // <table class="tickets responsive-table">
+    //    <thead>
+    //      <tr>
+    //          <th data-field="name">Ticket</th>
+    //          <th data-field="price">Price</th>
+    //          <th data-field="qty">Qty</th>
+    //          <th data-field="sub-total">Sub Total</th>
+    //      </tr>
+    //    </thead>
+    //
+    //    <tbody>
+    //      <tr>
+    //        <td>Handling Asycn</td>
+    //        <td>$25</td>
+    //        <td>2</td>
+    //        <td>$50</td>
+    //      </tr>
+    //      <tr>
+    //        <td>Handling Asycn</td>
+    //        <td>$25</td>
+    //        <td>2</td>
+    //        <td>$50</td>
+    //      </tr>
+    //      <tr>
+    //        <td>Handling Asycn</td>
+    //        <td>$25</td>
+    //        <td>2</td>
+    //        <td>$50</td>
+    //      </tr>
+        //  <tr class="tfoot">
+        //    <td colspan="3">Total Price:</td>
+        //    <td>$25</td>
+        //  </tr>
+    //    </tbody>
+    //  </table>
+
     function summary() {
       console.log(ticketBox.toString());
       var booked = ticketBox.getAllTickets();
-      var $tickets = $('<div>', {class : 'tickets'})
+      var $tickets = $('<table>', {class : 'tickets responsive-table centered'});
+      $('.summary-payment').empty();
+      $tickets.append("<thead><tr><th data-field='name'>Ticket</th><th data-field='price'>Price</th><th data-field='qty'>Qty</th><th data-field='sub-total'>Sub Total</th></tr></thead>");
+
+      var $ticket_body = $('<tbody>', {class : 'ticket-body'});
       for ( k in booked){
         if(booked[k] > 0){
-          var $ticket = $('<div>', {class : 'ticket'});
-            var $topic = $('<div>', {class : 'topic_booked'}).text(ticketBox.getTopic(k));
-            var $qty = $('<div>', {class : 'qty_booked'}).text(booked[k]);
-            var $price = $('<div>', {class : 'single_price'}).text(ticketBox.getPrice(k));
-            var $sub_total = $('<div>', {class : 'sub_total'}).text(ticketBox.calPrice(k, booked[k]));
+
+            var $ticket = $('<tr>', {class : 'ticket'});
+              var $topic = $('<td>', {class : 'topic_booked'}).text(ticketBox.getTopic(k));
+              var $qty = $('<td>', {class : 'qty_booked'}).text(booked[k]);
+              var $price = $('<td>', {class : 'single_price'}).text("$" + ticketBox.getPrice(k));
+              var $sub_total = $('<td>', {class : 'sub_total'}).text("$" + ticketBox.calPrice(k, booked[k]));
 
           $ticket.append($topic);
-          $ticket.append($qty);
           $ticket.append($price);
+          $ticket.append($qty);
           $ticket.append($sub_total);
+          $ticket_body.append($ticket);
 
-          $tickets.append($ticket);
         }
 
       }//summary-payment
-      $summary = $('<div>', {class : 'price_summary'}).text("Total Price: " + ticketBox.getTotal());
 
-      $('.summary-payment').empty();
+      $ticket_body.append("<tr class='tfoot'><td colspan='3'>Total Price</td><td>$" + ticketBox.getTotal() +  "</td></tr>");
+      $tickets.append($ticket_body);
       $('.summary-payment').append($tickets);
-      $('.summary-payment').append($summary);
-
     }
 
   }
