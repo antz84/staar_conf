@@ -22,7 +22,8 @@ t2.seats = 55
 t2.save
 
 t3 = Event.new()
-t3.topic = "Web sockets"
+t3.topic = "Learn Materilize"
+t1.session_time = "3:00pm"
 t3.price = 29.99
 t3.seats = 15
 t3.save
