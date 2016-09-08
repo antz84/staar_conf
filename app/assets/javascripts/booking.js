@@ -40,29 +40,6 @@ $(document).ready(function() {
       function (talk){
         // element generation
 
-        //sample template
-        // <div class="talk" id="1">
-        //
-        //   <div class="talk-header">
-        //     <div class="topic">HTML Sample</div>
-        //     <div class="time">31st, Oct @ 13:00 - 13:30</div>
-        //   </div>
-        //
-        //   <div class="ticket-entry">
-        //     <input class="ticketQty" type="text" value=100>
-        //     <div class="price-seat">
-        //       <div class="price">Price: $50</div>
-        //       <div class="seats">Seats left: 50</div>
-        //     </div>
-        //   </div>
-        //
-        //   <div class="ticketForm">
-        //     <button class="minus waves-effect waves-light btn"> - </button>
-        //     <button class="plus waves-effect waves-light btn"> + </button>
-        //   </div>
-        //
-        // </div>
-
         var $talk = $('<div>', {class: "talk"}).data('id', talk.id);
           var $talkHeader = $('<div>', {class: "talk-header"});
             var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
@@ -181,53 +158,10 @@ $(document).ready(function() {
 
     //Create a summary of tickets bought
 
-    // <div class="ticket">
-    //   <div class="topic_booked">Handling Asycn</div>
-    //   <div class="qty_booked">3</div>
-    //   <div class="single_price">25</div>
-    //   <div class="sub_total">75</div>
-    // </div>
-
-    // <table class="tickets responsive-table">
-    //    <thead>
-    //      <tr>
-    //          <th data-field="name">Ticket</th>
-    //          <th data-field="price">Price</th>
-    //          <th data-field="qty">Qty</th>
-    //          <th data-field="sub-total">Sub Total</th>
-    //      </tr>
-    //    </thead>
-    //
-    //    <tbody>
-    //      <tr>
-    //        <td>Handling Asycn</td>
-    //        <td>$25</td>
-    //        <td>2</td>
-    //        <td>$50</td>
-    //      </tr>
-    //      <tr>
-    //        <td>Handling Asycn</td>
-    //        <td>$25</td>
-    //        <td>2</td>
-    //        <td>$50</td>
-    //      </tr>
-    //      <tr>
-    //        <td>Handling Asycn</td>
-    //        <td>$25</td>
-    //        <td>2</td>
-    //        <td>$50</td>
-    //      </tr>
-        //  <tr class="tfoot">
-        //    <td colspan="3">Total Price:</td>
-        //    <td>$25</td>
-        //  </tr>
-    //    </tbody>
-    //  </table>
-
     function summary() {
       console.log(ticketBox.toString());
       var booked = ticketBox.getAllTickets();
-      var $tickets = $('<table>', {class : 'tickets responsive-table centered'});
+      var $tickets = $('<table>', {class : 'tickets centered'});
       $('.summary-payment').empty();
       $tickets.append("<thead><tr><th data-field='name'>Ticket</th><th data-field='price'>Price</th><th data-field='qty'>Qty</th><th data-field='sub-total'>Sub Total</th></tr></thead>");
 

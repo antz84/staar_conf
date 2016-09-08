@@ -85,16 +85,19 @@
 
 
 <div id="payment" class="side-nav z-depth-0">
-  <div class="summary-payment">
-    <!-- <div class="ticket">
-      <div class="topic_booked">Handling Asycn</div>
-      <div class="qty_booked">3</div>
-      <div class="single_price">25</div>
-      <div class="sub_total">75</div>
-    </div> -->
 
-  </div>
   <div class="payment-container">
+    <h3>Payment Summary</h3>
+    <div class="summary-payment">
+
+      <!-- <div class="ticket">
+        <div class="topic_booked">Handling Asycn</div>
+        <div class="qty_booked">3</div>
+        <div class="single_price">25</div>
+        <div class="sub_total">75</div>
+      </div> -->
+
+    </div>
     <div class="row">
       <form class="col s12" action="api/charges" method="POST" id="payment-form">
         <div class="row">
@@ -144,11 +147,12 @@
         </div>
         <input id="total" name="totalPrice" class="total-price" type="hidden" value="100">
         <div id="btn-row" class="row">
+          <div class="col s12" id="loader"></div>
           <div class="col s6">
             <a id="back-btn" class="waves-effect waves-light btn-large">Back</a>
           </div>
           <div class="col s6">
-            <button id="submit-btn" class="btn-large waves-effect waves-light btn" name="action">Submit
+            <button id="submit-btn" class="btn-large waves-effect waves-light btn"  name="action">Submit
               <i class="material-icons right">send</i>
             </button>
             <!-- <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book</a> -->
