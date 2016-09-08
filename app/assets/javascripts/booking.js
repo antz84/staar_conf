@@ -40,23 +40,29 @@ $(document).ready(function() {
       function (talk){
         // element generation
 
-        var $talk = $('<div>', {class: "talk"}).data('id', talk.id);
+        var $talk = $('<div>', {class: "talk row"}).data('id', talk.id);
         var $talkHeader = $('<div>', {class: "talk-header"});
         var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
-        var $time = $('<div>', {class: 'time'}).text(talk.session_time);
+        var $time = $('<div>', {class: 'time'}).text("31st, Oct@ " + talk.session_time);
         var $ticketEntry = $('<div>', {class: "ticket-entry"});
         var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
         var $priceSeat = $('<div>', {class: 'price-seat'});
         var $price = $('<div>', {class: 'price'}).text("$" + talk.price);
         var $seats = $('<div>', {class: 'seats'}).text("Tickets Left: " + talk.seats);
-        var $ticketForm = $('<div>', {class: 'ticketForm row'});
-        var $minusBtn = $('<button>', {class: 'minus waves-effect waves-light btn-large col s6'}).text("-");
-        var $plusBtn = $('<button>', {class: 'plus waves-effect waves-light btn-large col s6'}).text("+");
+        var $ticketForm = $('<div>', {class: 'ticketForm  row'});
+
+        var $minusDiv = $('<div>', {class: 'minusDiv col s6'});
+        var $plusDiv = $('<div>', {class: 'plusDiv col s6'});
+
+        var $minusBtn = $('<button>', {class: 'minus waves-effect waves-light btn-large'}).text("-");
+        var $plusBtn = $('<button>', {class: 'plus waves-effect waves-light btn-large'}).text("+");
 
         // appending
-        $ticketForm.append($ticketQty);
-        $ticketForm.append($minusBtn);
-        $ticketForm.append($plusBtn);
+        // $ticketForm.append($ticketQty);
+        $minusDiv.append($minusBtn);
+        $plusDiv.append($plusBtn);
+        $ticketForm.append($minusDiv);
+        $ticketForm.append($plusDiv);
 
         $priceSeat.append($price);
         $priceSeat.append($seats);
@@ -78,7 +84,8 @@ $(document).ready(function() {
 
     $('.ticketing').append($talkList);
 
-    $('.ticketing').append($pricePanel);
+    $talkList.append($pricePanel);
+
 
     //event bundling
     $('.minus').on('click', function(event) {
@@ -99,9 +106,12 @@ $(document).ready(function() {
       var $qty = $(event.target).closest('.talk').find('.ticketQty');
       var ticket_id = $(event.target).closest('.talk').data('id');
       var currentQty = +$qty.val();
-      $qty.val(currentQty+1);
-      ticketBox.updateTickets(ticket_id, currentQty+1);
-      $('.pricePanel').text("Total: $" + ticketBox.getTotal());
+      if(currentQty < ticketBox.getSeats(ticket_id)){
+        $qty.val(currentQty+1);
+        ticketBox.updateTickets(ticket_id, currentQty+1);
+        $('.pricePanel').text("Total: $" + ticketBox.getTotal());
+      }
+
     });
 
     $('.ticketQty').on('focusout', function(event){
