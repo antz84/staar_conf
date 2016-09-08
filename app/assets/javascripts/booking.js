@@ -110,11 +110,12 @@ $(document).ready(function() {
       var currentQty = Number($qty.val());
       if(currentQty !== 0) {
         $qty.val(currentQty-1);
-        updateTotal(ticket_id, currentQty-1);
+        ticketBox.updateTickets(ticket_id, currentQty-1);
         // debugger
       }else{
-        updateTotal(ticket_id, 0);
+        ticketBox.updateTickets(ticket_id, 0);
       }
+      $('.pricePanel').text("Total: $" + ticketBox.getTotal());
     });
 
     $('.plus').on('click', function(event) {
@@ -122,50 +123,29 @@ $(document).ready(function() {
       var ticket_id = $(event.target).closest('.talk').data('id');
       var currentQty = +$qty.val();
       $qty.val(currentQty+1);
-      updateTotal(ticket_id, currentQty+1);
+      ticketBox.updateTickets(ticket_id, currentQty+1);
+      $('.pricePanel').text("Total: $" + ticketBox.getTotal());
     });
 
     $('.ticketQty').on('focusout', function(event){
       var $qty = $(event.target).closest('.talk').find('.ticketQty');
       var ticket_id = $(event.target).closest('.talk').data('id');
-      updateTotal(ticket_id, $qty.val());
+      // updateTotal(ticket_id, $qty.val());
+
+      if( /^\d+$/.test($qty.val()) && +$qty.val() <= ticketBox.getSeats(ticket_id) ){
+        var qty = +$qty.val();
+        console.log(qty);
+        ticketBox.updateTickets(ticket_id, qty);
+      }else if( +$qty.val() > ticketBox.getSeats(ticket_id)){
+        $qty.val(ticketBox.getSeats(ticket_id));
+        ticketBox.updateTickets(ticket_id, ticketBox.getSeats(ticket_id));
+      }else{
+        $qty.val(0);
+        ticketBox.updateTickets(ticket_id, 0);
+      }
+      $('.pricePanel').text("Total: $" + ticketBox.getTotal());
     });
 
-    function updateTotal(t_id, qty) {
-
-          // //validation here: +number only: ^\d+$
-          if( /^\d+$/.test(qty) && +qty <= ticketBox.getSeats(t_id) ){
-            $("#"+qty).find('.ticketQty').val(qty);
-            var qty = +qty;
-            console.log(qty);
-            ticketBox.updateTickets(t_id, qty);
-          }else if( +qty > ticketBox.getSeats(t_id)){
-            $("#"+qty).find('.ticketQty').val(ticketBox.getSeats(t_id));
-          }else{
-            $("#"+qty).find('.ticketQty').val(0);
-            ticketBox.updateTickets(t_id, 0);
-          }
-          $('.pricePanel').text("Total: $" + ticketBox.getTotal());
-    }
-
-    // function updateTotal() {
-    //   $('.ticketQty').each(function() {
-    //     var t_id = $(this).closest('.talk').data('id');
-    //     // //validation here: +number only: ^\d+$
-    //     if( /^\d+$/.test($(this).val()) && +$(this).val() <= ticketBox.getSeats(t_id) ){
-    //       var qty = +$(this).val();
-    //       console.log(qty);
-    //       ticketBox.updateTickets(t_id, qty);
-    //     }else if( +$(this).val() > ticketBox.getSeats(t_id)){
-    //       $(this).val(ticketBox.getSeats(t_id));
-    //     }else{
-    //       $(this).val(0);
-    //       ticketBox.updateTickets(t_id, 0);
-    //     }
-    //
-    //   });
-    //   $('.pricePanel').text("Total: $" + ticketBox.getTotal());
-    // }
 
   }
 
@@ -200,33 +180,80 @@ $(document).ready(function() {
 
 
     //Create a summary of tickets bought
+
+    // <div class="ticket">
+    //   <div class="topic_booked">Handling Asycn</div>
+    //   <div class="qty_booked">3</div>
+    //   <div class="single_price">25</div>
+    //   <div class="sub_total">75</div>
+    // </div>
+
+    // <table class="tickets responsive-table">
+    //    <thead>
+    //      <tr>
+    //          <th data-field="name">Ticket</th>
+    //          <th data-field="price">Price</th>
+    //          <th data-field="qty">Qty</th>
+    //          <th data-field="sub-total">Sub Total</th>
+    //      </tr>
+    //    </thead>
+    //
+    //    <tbody>
+    //      <tr>
+    //        <td>Handling Asycn</td>
+    //        <td>$25</td>
+    //        <td>2</td>
+    //        <td>$50</td>
+    //      </tr>
+    //      <tr>
+    //        <td>Handling Asycn</td>
+    //        <td>$25</td>
+    //        <td>2</td>
+    //        <td>$50</td>
+    //      </tr>
+    //      <tr>
+    //        <td>Handling Asycn</td>
+    //        <td>$25</td>
+    //        <td>2</td>
+    //        <td>$50</td>
+    //      </tr>
+        //  <tr class="tfoot">
+        //    <td colspan="3">Total Price:</td>
+        //    <td>$25</td>
+        //  </tr>
+    //    </tbody>
+    //  </table>
+
     function summary() {
       console.log(ticketBox.toString());
       var booked = ticketBox.getAllTickets();
-      var $tickets = $('<div>', {class : 'tickets'})
+      var $tickets = $('<table>', {class : 'tickets responsive-table centered'});
+      $('.summary-payment').empty();
+      $tickets.append("<thead><tr><th data-field='name'>Ticket</th><th data-field='price'>Price</th><th data-field='qty'>Qty</th><th data-field='sub-total'>Sub Total</th></tr></thead>");
+
+      var $ticket_body = $('<tbody>', {class : 'ticket-body'});
       for ( k in booked){
         if(booked[k] > 0){
-          var $ticket = $('<div>', {class : 'ticket'});
-            var $topic = $('<div>', {class : 'topic_booked'}).text(ticketBox.getTopic(k));
-            var $qty = $('<div>', {class : 'qty_booked'}).text(booked[k]);
-            var $price = $('<div>', {class : 'single_price'}).text(ticketBox.getPrice(k));
-            var $sub_total = $('<div>', {class : 'sub_total'}).text(ticketBox.calPrice(k, booked[k]));
+
+            var $ticket = $('<tr>', {class : 'ticket'});
+              var $topic = $('<td>', {class : 'topic_booked'}).text(ticketBox.getTopic(k));
+              var $qty = $('<td>', {class : 'qty_booked'}).text(booked[k]);
+              var $price = $('<td>', {class : 'single_price'}).text("$" + ticketBox.getPrice(k));
+              var $sub_total = $('<td>', {class : 'sub_total'}).text("$" + ticketBox.calPrice(k, booked[k]));
 
           $ticket.append($topic);
-          $ticket.append($qty);
           $ticket.append($price);
+          $ticket.append($qty);
           $ticket.append($sub_total);
+          $ticket_body.append($ticket);
 
-          $tickets.append($ticket);
         }
 
       }//summary-payment
-      $summary = $('<div>', {class : 'price_summary'}).text("Total Price: " + ticketBox.getTotal());
 
-      $('.summary-payment').empty();
+      $ticket_body.append("<tr class='tfoot'><td colspan='3'>Total Price</td><td>$" + ticketBox.getTotal() +  "</td></tr>");
+      $tickets.append($ticket_body);
       $('.summary-payment').append($tickets);
-      $('.summary-payment').append($summary);
-
     }
 
   }
@@ -286,7 +313,11 @@ var shoppingCart = function (ticket_arr) {
         return sum;
       },
       getAllTickets : function() {
-        return ticketBucket;
+        var ticketsBooked = {}
+        $.each(ticketBucket, function(k, v) {
+          if(v!==0){ticketsBooked[k] = v}
+        });
+        return ticketsBooked;
       },
       clearBucket : function() {
         ticketBucket = {};
