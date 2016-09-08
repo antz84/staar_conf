@@ -87,14 +87,7 @@
   margin-right: 3.5%;
 }
 
-
-/*@media only screen and (max-width: 992px)
-table.responsive-table .tfoot{
+.tfoot{
     border: 0;
-    border-right: 1px solid #d0d0d0;
-}*/
-/*@media only screen and (max-width: 992px)
-table.responsive-table thead {
-    display: block;
-    float: left;
-}*/
+    border-top: 1px solid #d0d0d0;
+}

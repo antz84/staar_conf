@@ -8,15 +8,17 @@
 
 
 t1 = Event.new()
-t1.topic = "Handling Asycn"
-t1.price = 25
-t1.seats = 20
+t1.topic = "Lamborgini vs React"
+t1.session_time = "6:00pm"
+t1.price = 225
+t1.seats = 120
 t1.save
 
 t2 = Event.new()
-t2.topic = "Js Callbacks"
+t2.topic = "Throw your windows laptop out the window"
+t1.session_time = "4:45pm"
 t2.price = 20
-t2.seats = 15
+t2.seats = 55
 t2.save
 
 t3 = Event.new()
