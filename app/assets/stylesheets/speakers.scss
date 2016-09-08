@@ -63,11 +63,11 @@ display: none;
 
 .card{
   max-width: 24%;
-  display: inline-block;
   margin: 0;
   padding: 0;
+  margin-top: 30px;
   vertical-align: top;
-
+  display: inline-block;
 }
 .row{
   margin: 0;
@@ -75,6 +75,7 @@ display: none;
   margin-bottom: 5em;
   margin-top: 1em;
   width: 100%;
+  display: flex;
 }
 
 .card-title{
@@ -88,4 +89,12 @@ display: none;
 
 .all-speakers{
   text-align: center;
+}
+
+.card-content{
+  height: 600px;
+}
+
+.ray-pic{
+  padding-bottom: 10px;
 }
