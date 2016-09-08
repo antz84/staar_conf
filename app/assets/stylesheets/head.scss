@@ -81,6 +81,15 @@ video {
   font-weight: bold;
 }
 
+#side-buy-btn {
+  background-color: #4184F3;
+  display: block;
+  margin: 3.3em auto 1em auto;
+  width: 5em;
+  font-weight: bold;
+
+}
+
 #submit-btn, #back-btn, #home-btn {
   background-color: #4184F3;
   margin: 0 auto;
@@ -133,6 +142,9 @@ video {
 
   .smallScreen {
     display: none;
+  }
+  #bodyDiv {
+    margin-left: 20%;
   }
 
 }
@@ -204,5 +216,21 @@ video {
 
 .sidenav {
   border-right: 1px solid black;
+  width: 12%;
+  padding-top: 0;
 }
+
+
+.bigScreenLinks {
+  padding-bottom: 2em;
+}
+
+// .screenContainerBig {
+//   margin-left: 20%;
+// }
+
+
+
+
+
 
