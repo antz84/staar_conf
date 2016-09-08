@@ -7,6 +7,11 @@
   margin: 10% auto;
 }
 
+.ticketing .talk .row{
+  margin-bottom: 1em;
+}
+
+
 .talk
 .talk-header
 {
@@ -49,17 +54,27 @@
 
 .minus, .plus{
   /*max-width: 54px;*/
+  width: 50%;
   font-size: 2em;
   display:inline-block;
   background-color: #4184F3 !important;
 }
 
+.minusDiv {
+
+}
+
+.plusDiv {
+
+}
 .plus {
-  margin-left: 2px;
+  /*margin-left: 2px;*/
+  margin: 0 0 0 10%;
 }
 
 .minus {
-  margin-right: 2px;
+  /*margin-right: 2px;*/
+  margin: 0 5% 0 46%
 }
 
 .pricePanel {
@@ -74,17 +89,26 @@
   display: inline-block;
   margin:0;
   margin-bottom: 1em;
-  width: 45%;
+  width: 57%;
 }
 
 #book-back-btn {
-  margin-right: 2px;
-  margin-left: 3.5%;
+  margin-right: 10%;
+  margin-left: 48%;
 }
 
 #book-btn {
-  margin-left: 2px;
+  margin-left: 4.5%;
   margin-right: 3.5%;
+}
+
+#book-back-btn i{
+  transform: rotate(180deg);
+  margin-right: 0;
+}
+
+#book-btn i{
+  margin-left: 0;
 }
 
 .tfoot{
