@@ -41,17 +41,17 @@ $(document).ready(function() {
         // element generation
 
         var $talk = $('<div>', {class: "talk"}).data('id', talk.id);
-          var $talkHeader = $('<div>', {class: "talk-header"});
-            var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
-            var $time = $('<div>', {class: 'time'}).text(talk.session_time);
-          var $ticketEntry = $('<div>', {class: "ticket-entry"});
-            var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
-            var $priceSeat = $('<div>', {class: 'price-seat'});
-              var $price = $('<div>', {class: 'price'}).text("$" + talk.price);
-              var $seats = $('<div>', {class: 'seats'}).text("Tickets Left: " + talk.seats);
-          var $ticketForm = $('<div>', {class: 'ticketForm'});
-            var $minusBtn = $('<button>', {class: 'minus waves-effect waves-light btn'}).text("-");
-            var $plusBtn = $('<button>', {class: 'plus waves-effect waves-light btn'}).text("+");
+        var $talkHeader = $('<div>', {class: "talk-header"});
+        var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
+        var $time = $('<div>', {class: 'time'}).text(talk.session_time);
+        var $ticketEntry = $('<div>', {class: "ticket-entry"});
+        var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
+        var $priceSeat = $('<div>', {class: 'price-seat'});
+        var $price = $('<div>', {class: 'price'}).text("$" + talk.price);
+        var $seats = $('<div>', {class: 'seats'}).text("Tickets Left: " + talk.seats);
+        var $ticketForm = $('<div>', {class: 'ticketForm row'});
+        var $minusBtn = $('<button>', {class: 'minus waves-effect waves-light btn-large col s6'}).text("-");
+        var $plusBtn = $('<button>', {class: 'plus waves-effect waves-light btn-large col s6'}).text("+");
 
         // appending
         $ticketForm.append($ticketQty);
