@@ -153,7 +153,7 @@ video {
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
-    background-color: #4184F3; /* Black*/
+    background-color: #cccccc; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -161,11 +161,12 @@ video {
 
 /* The navigation menu links */
 .sidenav a {
-    padding: 8px 8px 8px 17px;
+    padding: 8px 8px 20px 17px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
+    font-weight: 300;
     color: white;
-    border-bottom: 1px solid #3367D5;
+    border-bottom: 1px solid black;
     margin-top: 1em;
     display: block;
     transition: 0.3s
@@ -200,3 +201,8 @@ video {
 #navCloseBtn {
   border: none;
 }
+
+.sidenav {
+  border-right: 1px solid black;
+}
+
