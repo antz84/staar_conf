@@ -5,8 +5,9 @@ $(document).ready(function(){
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
-    document.getElementById("mySidenav").style.width = "12%";
-    document.querySelector(".container").style.marginLeft = "20%";
+    $("#mySideNav").addClass("sideNav");
+    // document.querySelector(".container").style.marginLeft = "20%";
+    $("#bodyDiv").addClass("screenContainerBig");
 }
 
 //========= this is not needed anymore as our nav bar is fixed
