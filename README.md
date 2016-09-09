@@ -29,4 +29,7 @@ WDIConf is hosted [here](http://www.herokuapp.com/link) on Heroku
 ## Wireframe Mockup
 Wireframes are hosted [here](https://postimg.org/gallery/1hyilt5q6/#) on PostImg
 
+## Workflow
+Trello workflow can be viewed [here](https://trello.com/b/gtlqltNN/mvp)
+
 September 9th, 2016. By [AndrewPratley](https://github.com/AndrewPratley), [Antz84](https://github.com/antz84), [XRayV5](https://github.com/XRayV5), [SamWS](https://github.com/SamWS), [taddavisweb](https://github.com/taddavisweb)
