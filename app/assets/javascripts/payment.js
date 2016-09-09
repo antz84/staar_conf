@@ -3,7 +3,7 @@ $(function() {
   $form.submit(function(event) {
     // Disable the submit button to prevent repeated clicks:
     $form.find('.submit').prop('disabled', true);
-
+    $('#loader').append("<div class='progress'><div class='indeterminate'></div></div>");
     // Request a token from Stripe:
     Stripe.card.createToken($form, stripeResponseHandler);
 
@@ -49,6 +49,7 @@ function stripeResponseHandler(status, response) {
     }).done(function(res){
 
       console.log(res);
+      var $paymentContainer = $('.payment-container');
       $("#payment").empty();
 
       var page_content = "<div class='.done'>" +
@@ -62,9 +63,32 @@ function stripeResponseHandler(status, response) {
 
       $( "#home-btn" ).click(function(event) {
         //go back to homepage
+
+        $('.ticketQty').each(function () {
+          $(this).val(0);
+        });
+        exported.clearBucket();
+        $('.pricePanel').text("total: $0");
         exported.selfUpdate(updateSeats);
         $('.button-collapse').sideNav('hide');
         window.scrollTo(0, 0);
+
+        $("#payment").empty();
+        $("#payment").append($paymentContainer);
+        $("#loader").empty();
+
+        var $form = $('#payment-form');
+        $form.submit(function(event) {
+          // Disable the submit button to prevent repeated clicks:
+          $form.find('.submit').prop('disabled', true);
+          $('#loader').append("<div class='progress'><div class='indeterminate'></div></div>");
+          // Request a token from Stripe:
+          Stripe.card.createToken($form, stripeResponseHandler);
+
+          // Prevent the form from being submitted:
+          return false;
+        });
+
       });
 
       function updateSeats(lastest) {

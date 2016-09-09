@@ -40,46 +40,29 @@ $(document).ready(function() {
       function (talk){
         // element generation
 
-        //sample template
-        // <div class="talk" id="1">
-        //
-        //   <div class="talk-header">
-        //     <div class="topic">HTML Sample</div>
-        //     <div class="time">31st, Oct @ 13:00 - 13:30</div>
-        //   </div>
-        //
-        //   <div class="ticket-entry">
-        //     <input class="ticketQty" type="text" value=100>
-        //     <div class="price-seat">
-        //       <div class="price">Price: $50</div>
-        //       <div class="seats">Seats left: 50</div>
-        //     </div>
-        //   </div>
-        //
-        //   <div class="ticketForm">
-        //     <button class="minus waves-effect waves-light btn"> - </button>
-        //     <button class="plus waves-effect waves-light btn"> + </button>
-        //   </div>
-        //
-        // </div>
+        var $talk = $('<div>', {class: "talk row"}).data('id', talk.id);
+        var $talkHeader = $('<div>', {class: "talk-header"});
+        var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
+        var $time = $('<div>', {class: 'time'}).text("31st, Oct@ " + talk.session_time);
+        var $ticketEntry = $('<div>', {class: "ticket-entry"});
+        var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
+        var $priceSeat = $('<div>', {class: 'price-seat'});
+        var $price = $('<div>', {class: 'price'}).text("$" + talk.price);
+        var $seats = $('<div>', {class: 'seats'}).text("Tickets Left: " + talk.seats);
+        var $ticketForm = $('<div>', {class: 'ticketForm  row'});
 
-        var $talk = $('<div>', {class: "talk"}).data('id', talk.id);
-          var $talkHeader = $('<div>', {class: "talk-header"});
-            var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
-            var $time = $('<div>', {class: 'time'}).text(talk.session_time);
-          var $ticketEntry = $('<div>', {class: "ticket-entry"});
-            var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
-            var $priceSeat = $('<div>', {class: 'price-seat'});
-              var $price = $('<div>', {class: 'price'}).text("$" + talk.price);
-              var $seats = $('<div>', {class: 'seats'}).text("Tickets Left: " + talk.seats);
-          var $ticketForm = $('<div>', {class: 'ticketForm'});
-            var $minusBtn = $('<button>', {class: 'minus waves-effect waves-light btn'}).text("-");
-            var $plusBtn = $('<button>', {class: 'plus waves-effect waves-light btn'}).text("+");
+        var $minusDiv = $('<div>', {class: 'minusDiv col s6'});
+        var $plusDiv = $('<div>', {class: 'plusDiv col s6'});
+
+        var $minusBtn = $('<button>', {class: 'minus waves-effect waves-light btn-large'}).text("-");
+        var $plusBtn = $('<button>', {class: 'plus waves-effect waves-light btn-large'}).text("+");
 
         // appending
-        $ticketForm.append($ticketQty);
-        $ticketForm.append($minusBtn);
-        $ticketForm.append($plusBtn);
+        // $ticketForm.append($ticketQty);
+        $minusDiv.append($minusBtn);
+        $plusDiv.append($plusBtn);
+        $ticketForm.append($minusDiv);
+        $ticketForm.append($plusDiv);
 
         $priceSeat.append($price);
         $priceSeat.append($seats);
@@ -101,7 +84,8 @@ $(document).ready(function() {
 
     $('.ticketing').append($talkList);
 
-    $('.ticketing').append($pricePanel);
+    $talkList.append($pricePanel);
+
 
     //event bundling
     $('.minus').on('click', function(event) {
@@ -122,9 +106,12 @@ $(document).ready(function() {
       var $qty = $(event.target).closest('.talk').find('.ticketQty');
       var ticket_id = $(event.target).closest('.talk').data('id');
       var currentQty = +$qty.val();
-      $qty.val(currentQty+1);
-      ticketBox.updateTickets(ticket_id, currentQty+1);
-      $('.pricePanel').text("Total: $" + ticketBox.getTotal());
+      if(currentQty < ticketBox.getSeats(ticket_id)){
+        $qty.val(currentQty+1);
+        ticketBox.updateTickets(ticket_id, currentQty+1);
+        $('.pricePanel').text("Total: $" + ticketBox.getTotal());
+      }
+
     });
 
     $('.ticketQty').on('focusout', function(event){
@@ -181,53 +168,10 @@ $(document).ready(function() {
 
     //Create a summary of tickets bought
 
-    // <div class="ticket">
-    //   <div class="topic_booked">Handling Asycn</div>
-    //   <div class="qty_booked">3</div>
-    //   <div class="single_price">25</div>
-    //   <div class="sub_total">75</div>
-    // </div>
-
-    // <table class="tickets responsive-table">
-    //    <thead>
-    //      <tr>
-    //          <th data-field="name">Ticket</th>
-    //          <th data-field="price">Price</th>
-    //          <th data-field="qty">Qty</th>
-    //          <th data-field="sub-total">Sub Total</th>
-    //      </tr>
-    //    </thead>
-    //
-    //    <tbody>
-    //      <tr>
-    //        <td>Handling Asycn</td>
-    //        <td>$25</td>
-    //        <td>2</td>
-    //        <td>$50</td>
-    //      </tr>
-    //      <tr>
-    //        <td>Handling Asycn</td>
-    //        <td>$25</td>
-    //        <td>2</td>
-    //        <td>$50</td>
-    //      </tr>
-    //      <tr>
-    //        <td>Handling Asycn</td>
-    //        <td>$25</td>
-    //        <td>2</td>
-    //        <td>$50</td>
-    //      </tr>
-        //  <tr class="tfoot">
-        //    <td colspan="3">Total Price:</td>
-        //    <td>$25</td>
-        //  </tr>
-    //    </tbody>
-    //  </table>
-
     function summary() {
       console.log(ticketBox.toString());
       var booked = ticketBox.getAllTickets();
-      var $tickets = $('<table>', {class : 'tickets responsive-table centered'});
+      var $tickets = $('<table>', {class : 'tickets centered'});
       $('.summary-payment').empty();
       $tickets.append("<thead><tr><th data-field='name'>Ticket</th><th data-field='price'>Price</th><th data-field='qty'>Qty</th><th data-field='sub-total'>Sub Total</th></tr></thead>");
 

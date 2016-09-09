@@ -6,6 +6,10 @@ th {
   font-weight: 400;
 }
 
+button, a {
+  max-width: 11em;
+}
+
 
 h4, td, {
  font-weight: 300;
@@ -93,10 +97,15 @@ video {
 #submit-btn, #back-btn, #home-btn {
   background-color: #4184F3;
   margin: 0 auto;
+  height: 54px;
+}
+
+#back-btn, #submit-btn {
+  max-width: 11em;
 }
 
 #submit-btn {
-  height: 48px;
+  display: block;
 }
 
 #btn-row {
@@ -224,13 +233,4 @@ video {
 .bigScreenLinks {
   padding-bottom: 2em;
 }
-
-// .screenContainerBig {
-//   margin-left: 20%;
-// }
-
-
-
-
-
 
