@@ -8,24 +8,69 @@
 
 
 t1 = Event.new()
-t1.topic = "Handling Asycn"
-t1.price = 25
-t1.seats = 20
+t1.topic = "Lamborgini vs React"
+t1.session_time = "6:00pm"
+t1.price = 225
+t1.seats = 120
 t1.save
 
 t2 = Event.new()
-t2.topic = "Js Callbacks"
+t2.topic = "Throw your windows laptop out the window"
+t2.session_time = "4:45pm"
 t2.price = 20
-t2.seats = 15
+t2.seats = 55
 t2.save
 
 t3 = Event.new()
-t3.topic = "Web sockets"
-t3.price = 29.99
+t3.topic = "Quickly Learn Materialize"
+t3.session_time = "3:00pm"
+t3.price = 29
 t3.seats = 15
 t3.save
 
-#
+t4 = Event.new()
+t4.topic = "Quickly Learn Materialize"
+t4.session_time = "3:00pm"
+t4.price = 25
+t4.seats = 50
+t4.save
+
+t5 = Event.new()
+t5.topic = "Dominate the world one search at a time"
+t5.session_time = "2:30pm"
+t5.price = 30
+t5.seats = 30
+t5.save
+
+t6 = Event.new()
+t6.topic = "How to be a digital nomad"
+t6.session_time = "1:15pm"
+t6.price = 35
+t6.seats = 15
+t6.save
+
+t7 = Event.new()
+t7.topic = "Let's all learn ES6 together"
+t7.session_time = "11:30pm"
+t7.price = 29
+t7.seats = 15
+t7.save
+
+t8 = Event.new()
+t8.topic = "World Business Entrepreneur"
+t8.session_time = "12:30pm"
+t8.price = 45
+t8.seats = 20
+t8.save
+
+t9 = Event.new()
+t9.topic = "NP Hard Problem - softened"
+t9.session_time = "4:30am"
+t9.price = 99999
+t9.seats = 12
+t9.save
+
+#Dominate the world one search at a time
 # number     | integer                     |
 # firstname  | character varying           |
 # surname    | character varying           |

@@ -54,18 +54,22 @@
 
 <div class="bigScreen">
   <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" id="navCloseBtn" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Location</a>
-  <a href="#">Speakers</a>
-  <a href="#">Timetable</a>
-  <a href="#">Sponsors</a>
-  <a href="#">Contact Us</a>
+  <a href="#" class="bigScreenLinks">About</a>
+  <a href="#" class="bigScreenLinks">Location</a>
+  <a href="#" class="bigScreenLinks">Speakers</a>
+  <a href="#" class="bigScreenLinks">Timetable</a>
+  <a href="#" class="bigScreenLinks">Sponsors</a>
+  <a href="#" class="bigScreenLinks">Contact Us</a>
+    <a id="side-buy-btn" href="#" data-activates="book" class="button-collapse waves-effect waves-light btn-large title-msg animated fadeInDown">Buy</a>
+    <div class="container">
+    © STAAR
+    </div>
 </div>
 
-<!-- Use any element to open the sidenav -->
-<span onclick="openNav()">open</span>
 
+<!-- Use any element to open the sidenav -->
+<!-- <span onclick="openNav()">open</span>
+ -->
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 
 </div>
@@ -77,24 +81,36 @@
       <div class="ticketing">
                     <!-- ticket booking form goes in here -->
       </div>
-      <div class="book-btn-container">
-        <a id="book-back-btn" class="waves-effect waves-light btn-large">Back</a>
-        <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book</a>
+      <div class="book-btn-container container">
+
+        <div class="inner-container row">
+          <div class="book-back-div col s6">
+            <a id="book-back-btn" class="waves-effect waves-light btn-large"><i class="medium material-icons left">play_arrow</i>Back</a>
+          </div>
+
+          <div class="book-btn-div col s6">
+            <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book<i class="medium material-icons right">play_arrow</i></a>
+          </div>
+        </div>
+
       </div>
 </div>
 
 
 <div id="payment" class="side-nav z-depth-0">
-  <div class="summary-payment">
-    <!-- <div class="ticket">
-      <div class="topic_booked">Handling Asycn</div>
-      <div class="qty_booked">3</div>
-      <div class="single_price">25</div>
-      <div class="sub_total">75</div>
-    </div> -->
 
-  </div>
   <div class="payment-container">
+    <h3>Payment Summary</h3>
+    <div class="summary-payment">
+
+      <!-- <div class="ticket">
+        <div class="topic_booked">Handling Asycn</div>
+        <div class="qty_booked">3</div>
+        <div class="single_price">25</div>
+        <div class="sub_total">75</div>
+      </div> -->
+
+    </div>
     <div class="row">
       <form class="col s12" action="api/charges" method="POST" id="payment-form">
         <div class="row">
@@ -144,14 +160,14 @@
         </div>
         <input id="total" name="totalPrice" class="total-price" type="hidden" value="100">
         <div id="btn-row" class="row">
+          <div class="col s12" id="loader"></div>
           <div class="col s6">
             <a id="back-btn" class="waves-effect waves-light btn-large">Back</a>
           </div>
           <div class="col s6">
-            <button id="submit-btn" class="btn-large waves-effect waves-light btn" name="action">Submit
+            <button id="submit-btn" class="btn-large waves-effect waves-light btn"  name="action">Submit
               <i class="material-icons right">send</i>
             </button>
-            <!-- <a id="book-btn" href="#" data-activates="payment" class="button-collapse waves-effect waves-light btn">Book</a> -->
           </div>
         </div>
       </form>
