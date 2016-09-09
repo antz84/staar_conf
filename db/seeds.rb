@@ -16,14 +16,14 @@ t1.save
 
 t2 = Event.new()
 t2.topic = "Throw your windows laptop out the window"
-t4.session_time = "4:45pm"
+t2.session_time = "4:45pm"
 t2.price = 20
 t2.seats = 55
 t2.save
 
 t3 = Event.new()
 t3.topic = "Quickly Learn Materialize"
-t4.session_time = "3:00pm"
+t3.session_time = "3:00pm"
 t3.price = 29
 t3.seats = 15
 t3.save
