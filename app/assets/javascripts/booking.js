@@ -43,7 +43,7 @@ $(document).ready(function() {
         var $talk = $('<div>', {class: "talk row"}).data('id', talk.id);
         var $talkHeader = $('<div>', {class: "talk-header"});
         var $topic = $('<div>', {class: 'topic'}).text(talk.topic);
-        var $time = $('<div>', {class: 'time'}).text("31st, Oct@ " + talk.session_time);
+        var $time = $('<div>', {class: 'time'}).text("31st, Oct @ " + talk.session_time);
         var $ticketEntry = $('<div>', {class: "ticket-entry"});
         var $ticketQty = $('<input>', {class: 'ticketQty', type: 'text', value: 0});
         var $priceSeat = $('<div>', {class: 'price-seat'});
